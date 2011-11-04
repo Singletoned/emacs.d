@@ -44,6 +44,11 @@
  '(link-visited ((t (:foreground "#8b008b"))))
  '(header-line ((t (:background "#e5e5e5" :foreground "#333333"))))
  '(hl-line ((t (:background "333333"))))
+ '(magit-diff-add ((t (:foreground "dark green"))))
+ '(magit-diff-del ((t (:foreground "red"))))
+ '(magit-diff-none ((t (:foreground "white"))))
+ '(magit-section-title ((t (:foreground "blue"))))
+ '(magit-item-highlight ((t (:background "#222233"))))
 )
 
 (provide-theme 'oldskool)
