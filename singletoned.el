@@ -12,6 +12,8 @@
 (global-set-key (kbd "s-[") 'unindent-dwim)
 (global-set-key (kbd "s-]") 'indent-dwim)
 
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; Some Yegge-isations
 (global-set-key (kbd "M-h") 'help-command)
 (global-set-key (kbd "C-h") 'backward-delete-char)
