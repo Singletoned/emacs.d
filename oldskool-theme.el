@@ -42,7 +42,9 @@
  '(lazy-highlight ((t (:background "#afeeee"))))
  '(link ((t (:foreground "#0000ff"))))
  '(link-visited ((t (:foreground "#8b008b"))))
- '(header-line ((t (:background "#e5e5e5" :foreground "#333333")))))
+ '(header-line ((t (:background "#e5e5e5" :foreground "#333333"))))
+ '(hl-line ((t (:background "333333"))))
+)
 
 (provide-theme 'oldskool)
 
