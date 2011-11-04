@@ -23,7 +23,7 @@
 (custom-theme-set-faces
  'oldskool
  '(default ((t (:background "black" :foreground "green"))))
- '(cursor ((t (:background "grey" :foreground "blue"))))
+ '(cursor ((t (:background "orange" :foreground "grey"))))
  '(region ((t (:background "#eedc82"))))
  '(mode-line ((t (:background "#bfbfbf" :foreground "#000000"))))
  '(mode-line-inactive ((t (:background "#e5e5e5" :foreground "#333333"))))
