@@ -1,5 +1,7 @@
 (server-start)
 
+(set-default 'hl-line-sticky-flag nil)
+
 ;; Some Yegge-isations
 (global-set-key (kbd "M-h") 'help-command)
 (global-set-key (kbd "C-h") 'backward-delete-char)
