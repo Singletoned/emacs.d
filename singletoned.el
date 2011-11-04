@@ -2,6 +2,16 @@
 
 (set-default 'hl-line-sticky-flag nil)
 
+;; Keyboard shortcuts
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "s-w")
+                (lambda () (interactive) (kill-buffer (current-buffer))))
+(global-set-key (kbd "s-<return>") 'eol-and-next-line-and-indent)
+(global-set-key (kbd "s-/") 'my-comment-dwim)
+(global-set-key (kbd "s-[") 'unindent-dwim)
+(global-set-key (kbd "s-]") 'indent-dwim)
+
 ;; Some Yegge-isations
 (global-set-key (kbd "M-h") 'help-command)
 (global-set-key (kbd "C-h") 'backward-delete-char)
