@@ -2,6 +2,21 @@
 
 (set-default 'hl-line-sticky-flag nil)
 
+;; Autopair
+
+(require 'autopair)
+(autopair-global-mode)
+(set-default 'delete-selection-mode nil)
+(set 'autopair-autowrap t)
+(add-hook 'paredit-mode-hook #'(lambda () (setq autopair-dont-activate t)))
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (setq autopair-handle-action-fns
+                    (list #'autopair-default-handle-action
+                          #'autopair-python-triple-quote-action))))
+
+
+
 ;; Keyboard shortcuts
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
