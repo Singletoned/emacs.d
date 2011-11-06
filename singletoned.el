@@ -16,6 +16,23 @@
                           #'autopair-python-triple-quote-action))))
 
 
+;; HippieExpand Completion
+
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "§") 'hippie-expand)
+
+(global-set-key (kbd "±") (make-hippie-expand-function
+                                          '(try-expand-line
+                                            try-expand-line-all-buffers) t))
+
+(setq hippie-expand-try-functions-list 
+      '(try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-all-abbrevs))
+
 
 ;; Keyboard shortcuts
 (global-set-key (kbd "M-p") 'backward-paragraph)
