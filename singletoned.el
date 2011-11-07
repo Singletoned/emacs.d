@@ -1,5 +1,11 @@
 (server-start)
 
+
+;; Requirements
+
+(require 'saveplace)
+
+
 ;; Config
 
 (set-default 'hl-line-sticky-flag nil)
