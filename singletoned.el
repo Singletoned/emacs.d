@@ -5,6 +5,12 @@
 (set-default 'hl-line-sticky-flag nil)
 (global-linum-mode t)
 
+;; Whitespace
+
+(require 'whitespace)
+(set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
+(set 'whitespace-line-column 78)
+(global-whitespace-mode)
 ;; Autopair
 
 (require 'autopair)
