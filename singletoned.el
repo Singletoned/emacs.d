@@ -1,5 +1,7 @@
 (server-start)
 
+;; Config
+
 (set-default 'hl-line-sticky-flag nil)
 
 ;; Autopair
