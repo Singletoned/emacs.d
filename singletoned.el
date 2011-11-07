@@ -5,12 +5,14 @@
 (set-default 'hl-line-sticky-flag nil)
 (global-linum-mode t)
 
+
 ;; Whitespace
 
 (require 'whitespace)
 (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
 (set 'whitespace-line-column 78)
 (global-whitespace-mode)
+
 
 ;; Tabs
 ;; Try really, really hard to force tabs to be 4 spaces
@@ -53,6 +55,7 @@
 
 
 ;; Keyboard shortcuts
+
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 (global-set-key (kbd "s-w")
@@ -64,6 +67,7 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+
 ;; Some Yegge-isations
 (global-set-key (kbd "M-h") 'help-command)
 (global-set-key (kbd "C-h") 'backward-delete-char)
@@ -72,6 +76,7 @@
 (global-set-key (kbd "C-c C-k") 'kill-region)
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 (global-set-key (kbd "C-c C-m") 'execute-extended-command)
+
 
 ;; Functions
 
