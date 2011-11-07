@@ -11,6 +11,15 @@
 (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
 (set 'whitespace-line-column 78)
 (global-whitespace-mode)
+
+;; Tabs
+;; Try really, really hard to force tabs to be 4 spaces
+
+(set-default 'tab-width 4)
+(set-default 'python-indent 4)
+(set 'default-tab-width 4)
+
+
 ;; Autopair
 
 (require 'autopair)
