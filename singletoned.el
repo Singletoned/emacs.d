@@ -10,6 +10,8 @@
 
 ;; Config
 
+(when (> (display-color-cells) 8)
+ (hl-line-mode t))
 (set-default 'hl-line-sticky-flag nil)
 (global-linum-mode t)
 
