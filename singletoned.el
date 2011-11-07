@@ -3,6 +3,7 @@
 ;; Config
 
 (set-default 'hl-line-sticky-flag nil)
+(global-linum-mode t)
 
 ;; Autopair
 
