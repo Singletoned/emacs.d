@@ -14,6 +14,7 @@
  (hl-line-mode t))
 (set-default 'hl-line-sticky-flag nil)
 (global-linum-mode t)
+(show-paren-mode t)
 
 
 ;; Whitespace
