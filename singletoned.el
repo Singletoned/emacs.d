@@ -16,6 +16,21 @@
 (global-linum-mode t)
 (show-paren-mode t)
 
+(set-default 'indent-tabs-mode nil)
+(set-default 'indicate-empty-lines t)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq visible-bell t
+      inhibit-startup-message t
+      color-theme-is-global t
+      sentence-end-double-space nil
+      shift-select-mode nil
+      oddmuse-directory "~/.emacs.d/oddmuse"
+      save-place-file "~/.emacs.d/places"
+      backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
+      diff-switches "-u")
+
 
 ;; Whitespace
 
