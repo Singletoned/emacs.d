@@ -134,6 +134,7 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (global-set-key (kbd "s-]") 'indent-dwim)
 
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
 ;; Some Yegge-isations
