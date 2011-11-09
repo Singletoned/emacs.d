@@ -30,7 +30,7 @@
  '(fringe ((t (:background "#191919"))))
  '(minibuffer-prompt ((t (:foreground "#0000cd"))))
  '(font-lock-builtin-face ((t (:foreground "blue"))))
- '(font-lock-comment-face ((t (:foreground "cyan"))))
+ '(font-lock-comment-face ((t (:foreground "#666"))))
  '(font-lock-constant-face ((t (:foreground "magenta"))))
  '(font-lock-function-name-face ((t (:foreground "cyan"))))
  '(font-lock-keyword-face ((t (:foreground "red"))))
