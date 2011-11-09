@@ -27,6 +27,9 @@
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)
 
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq visible-bell t
