@@ -55,6 +55,9 @@
 
 
 ;; Tabs
+
+(set-default 'indent-tabs-mode nil)
+
 ;; Try really, really hard to force tabs to be 4 spaces
 
 (set-default 'tab-width 4)
