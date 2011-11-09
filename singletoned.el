@@ -10,6 +10,11 @@
 (require 'centered-cursor-mode)
 
 
+;; Colors
+
+(load-theme 'oldskool)
+
+
 ;; Config
 
 (when (> (display-color-cells) 8)
