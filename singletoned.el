@@ -6,6 +6,7 @@
 (require 'saveplace)
 (require 'whitespace)
 (require 'autopair)
+(require 'uniquify)
 
 
 ;; Config
@@ -26,6 +27,7 @@
       color-theme-is-global t
       sentence-end-double-space nil
       shift-select-mode nil
+      uniquify-buffer-name-style 'forward
       oddmuse-directory "~/.emacs.d/oddmuse"
       save-place-file "~/.emacs.d/places"
       backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
