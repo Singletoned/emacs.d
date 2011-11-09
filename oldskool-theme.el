@@ -50,7 +50,7 @@
  '(magit-diff-del ((t (:foreground "red3"))))
  '(magit-diff-none ((t (:foreground "white"))))
  '(magit-section-title ((t (:foreground "blue"))))
- '(magit-item-highlight ((t (:background "#222233"))))
+ '(magit-item-highlight ((t (:background "#222"))))
 )
 
 (provide-theme 'oldskool)
