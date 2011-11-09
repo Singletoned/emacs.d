@@ -4,6 +4,8 @@
 ;; Requirements
 
 (require 'saveplace)
+(require 'whitespace)
+(require 'autopair)
 
 
 ;; Config
@@ -14,7 +16,6 @@
 
 ;; Whitespace
 
-(require 'whitespace)
 (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
 (set 'whitespace-line-column 78)
 (global-whitespace-mode)
@@ -30,7 +31,6 @@
 
 ;; Autopair
 
-(require 'autopair)
 (autopair-global-mode)
 (set-default 'delete-selection-mode nil)
 (set 'autopair-autowrap t)
