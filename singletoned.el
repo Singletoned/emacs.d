@@ -8,6 +8,7 @@
 (require 'autopair)
 (require 'uniquify)
 (require 'centered-cursor-mode)
+(require 'rect-mark)
 
 
 ;; Colors
@@ -110,6 +111,15 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
       ido-use-virtual-buffers t
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
+
+
+;; RectMark
+
+(global-set-key (kbd "C-x r C-SPC") 'rm-set-mark)
+(global-set-key (kbd "C-x r C-x") 'rm-exchange-point-and-mark)
+(global-set-key (kbd "C-x r C-k") 'rm-kill-region)
+(global-set-key (kbd "C-x r S-x") 'rm-kill-region)
+(global-set-key (kbd "C-x r S-c") 'rm-kill-ring-save)
 
 
 ;; Keyboard shortcuts
