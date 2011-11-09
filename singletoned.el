@@ -23,6 +23,7 @@
 (set-default 'hl-line-sticky-flag nil)
 (global-linum-mode t)
 (show-paren-mode t)
+(set-default 'indicate-empty-lines t)
 
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)
