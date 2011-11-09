@@ -7,6 +7,7 @@
 (require 'whitespace)
 (require 'autopair)
 (require 'uniquify)
+(require 'centered-cursor-mode)
 
 
 ;; Config
@@ -32,6 +33,12 @@
       save-place-file "~/.emacs.d/places"
       backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
       diff-switches "-u")
+
+
+;; Centered Cursor
+
+(global-centered-cursor-mode t)
+(setq ccm-recenter-at-end-of-file t)
 
 
 ;; Whitespace
