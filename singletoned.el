@@ -18,6 +18,13 @@
 
 ;; Colors
 
+(set 'custom-safe-themes
+     (cons (with-temp-buffer
+               (insert-file-contents
+                (concat user-emacs-directory "oldskool-theme.el"))
+               (sha1 (current-buffer)))
+           custom-safe-themes))
+
 (load-theme 'oldskool)
 
 
