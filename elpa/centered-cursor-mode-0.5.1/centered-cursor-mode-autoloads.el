@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads nil nil ("centered-cursor-mode-pkg.el" "centered-cursor-mode.el")
-;;;;;;  (20153 16521 756418))
+;;;;;;  (20157 44155 446347))
 
 ;;;***
 
