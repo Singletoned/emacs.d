@@ -1,5 +1,9 @@
 (server-start)
 
+;; Load Path
+
+(add-to-list 'load-path (concat user-emacs-directory "yasnippet"))
+
 
 ;; Requirements
 
@@ -9,6 +13,7 @@
 (require 'uniquify)
 (require 'centered-cursor-mode)
 (require 'rect-mark)
+(require 'yasnippet)
 
 
 ;; Colors
@@ -87,6 +92,12 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
               (setq autopair-handle-action-fns
                     (list #'autopair-default-handle-action
                           #'autopair-python-triple-quote-action))))
+
+
+;; YASnippet
+
+(set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet/snippets"))
+(yas/initialize)
 
 
 ;; HippieExpand Completion
