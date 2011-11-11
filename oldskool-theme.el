@@ -28,7 +28,7 @@
  '(mode-line ((t (:background "#bfbfbf" :foreground "#000000"))))
  '(mode-line-inactive ((t (:background "#e5e5e5" :foreground "#333333"))))
  '(fringe ((t (:background "#191919"))))
- '(minibuffer-prompt ((t (:foreground "#0000cd"))))
+ '(minibuffer-prompt ((t (:foreground "#FF0000"))))
  '(font-lock-builtin-face ((t (:foreground "blue"))))
  '(font-lock-comment-face ((t (:foreground "#666"))))
  '(font-lock-constant-face ((t (:foreground "magenta"))))
