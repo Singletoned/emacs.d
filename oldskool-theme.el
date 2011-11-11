@@ -43,7 +43,7 @@
  '(link ((t (:foreground "#0000ff"))))
  '(link-visited ((t (:foreground "#8b008b"))))
  '(header-line ((t (:background "#e5e5e5" :foreground "#333333"))))
- '(hl-line ((t (:background "333333"))))
+ '(hl-line ((t (:background "#222"))))
  '(diff-added ((t (:foreground "green4"))))
  '(diff-removed ((t (:foreground "red3"))))
  '(magit-diff-add ((t (:foreground "green4"))))
