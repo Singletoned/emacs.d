@@ -41,6 +41,8 @@
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)
 
+(set-default 'require-final-newline t)
+
 (setq frame-title-format '(buffer-file-name "%f" ("%b")))
 
 (set-terminal-coding-system 'utf-8)
