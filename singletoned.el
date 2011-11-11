@@ -36,6 +36,8 @@
 (show-paren-mode t)
 (set-default 'indicate-empty-lines t)
 
+(tool-bar-mode -1)
+
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)
 
