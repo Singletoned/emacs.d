@@ -85,7 +85,9 @@
 
 (set-default 'tab-width 4)
 (set-default 'python-indent 4)
+(set-default 'python-tab-width 4)
 (set 'default-tab-width 4)
+(set-default 'python-indent-guess-indent-offset nil)
 
 
 ;; Extra Keywords
