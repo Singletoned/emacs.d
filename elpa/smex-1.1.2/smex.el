@@ -4,7 +4,7 @@
 ;;
 ;; Author: Cornelius Mika <cornelius.mika@gmail.com>
 ;; URL: http://github.com/nonsequitur/smex/
-;; Version: 1.1.1
+;; Version: 1.1.2
 ;; Keywords: convenience, usability
 
 ;; This file is not part of GNU Emacs.
@@ -25,7 +25,7 @@
 ;; http://github.com/nonsequitur/smex/blob/master/README.markdown
 
 (require 'ido)
-;; Provides `union' and `dolist'.
+;; Provides `union', `dolist' and `delete-if'.
 (require 'cl)
 
 (defgroup smex nil
@@ -58,6 +58,11 @@ Must be set before initializing Smex."
 (defcustom smex-prompt-string "M-x "
   "String to display in the Smex prompt."
   :type 'string
+  :group 'smex)
+
+(defcustom smex-key-advice-ignore-menu-bar nil
+  "If non-nil, `smex-key-advice' ignores `menu-bar' bindings"
+  :type 'boolean
   :group 'smex)
 
 (defvar smex-cache)
@@ -112,7 +117,20 @@ Must be set before initializing Smex."
         (ido-enable-prefix nil)
         (ido-enable-flex-matching t)
         (ido-max-prospects 10))
-    (ido-completing-read smex-prompt-string choices nil nil initial-input)))
+    (ido-completing-read (smex-prompt-with-prefix-arg) choices nil nil initial-input)))
+
+(defun smex-prompt-with-prefix-arg ()
+  (if (not current-prefix-arg)
+      smex-prompt-string
+    (concat
+     (if (eq current-prefix-arg '-)
+         "- "
+       (if (integerp current-prefix-arg)
+           (format "%d " current-prefix-arg)
+         (if (= (car current-prefix-arg) 4)
+             "C-u "
+           (format "%d " (car current-prefix-arg)))))
+     smex-prompt-string)))
 
 (defun smex-prepare-ido-bindings ()
   (define-key ido-completion-map (kbd "C-h f") 'smex-describe-function)
@@ -364,6 +382,10 @@ Returns nil when reaching the end of the list."
 
 (defun smex-key-advice (command)
   (let ((keys (where-is-internal command)))
+    (if smex-key-advice-ignore-menu-bar
+        (setq keys (delete-if
+                    (lambda (vect) (equal (aref vect 0) 'menu-bar))
+                    keys)))
     (if keys
         (format "You can run the command `%s' with %s"
                 command
@@ -434,7 +456,7 @@ sorted by frequency of use."
     (toggle-read-only nil)
     (erase-buffer)
     (ido-pp 'unbound-commands)
-    (beginning-of-buffer)))
+    (goto-char (point-min))))
 
 (provide 'smex)
 ;;; smex.el ends here
