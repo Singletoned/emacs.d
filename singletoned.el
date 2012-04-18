@@ -201,7 +201,7 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 
 
 ;; Some Yegge-isations
-(global-set-key (kbd "M-h") 'help-command)
+(global-set-key (kbd "s-h") 'help-command)
 (global-set-key (kbd "C-h") 'backward-delete-char)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 (global-set-key (kbd "C-x C-k") 'kill-region)
