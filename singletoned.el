@@ -212,6 +212,12 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 
 ;; Functions
 
+(defun dired-dwim-copy ()
+  "Copy file to other dired window"
+  (interactive)
+  (let ((dired-dwim-target t))
+    (dired-do-copy)))
+
 (defun eol-and-next-line-and-indent ()
   (interactive)
   (end-of-line)
