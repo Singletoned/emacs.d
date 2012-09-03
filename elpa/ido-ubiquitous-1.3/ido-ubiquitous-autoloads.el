@@ -4,19 +4,19 @@
 
 
 ;;;### (autoloads (ido-ubiquitous-function-exceptions ido-ubiquitous-command-exceptions
-;;;;;;  ido-ubiquitous ido-ubiquitous) "ido-ubiquitous" "ido-ubiquitous.el"
-;;;;;;  (20148 507))
+;;;;;;  ido-ubiquitous-mode ido-ubiquitous) "ido-ubiquitous" "ido-ubiquitous.el"
+;;;;;;  (20548 46118))
 ;;; Generated autoloads from ido-ubiquitous.el
 
 (let ((loads (get 'ido-ubiquitous 'custom-loads))) (if (member '"ido-ubiquitous" loads) nil (put 'ido-ubiquitous 'custom-loads (cons '"ido-ubiquitous" loads))))
 
-(defvar ido-ubiquitous nil "\
+(defvar ido-ubiquitous-mode nil "\
 Non-nil if Ido-Ubiquitous mode is enabled.
-See the command `ido-ubiquitous' for a description of this minor mode.")
+See the command `ido-ubiquitous-mode' for a description of this minor mode.")
 
-(custom-autoload 'ido-ubiquitous "ido-ubiquitous" nil)
+(custom-autoload 'ido-ubiquitous-mode "ido-ubiquitous" nil)
 
-(autoload 'ido-ubiquitous "ido-ubiquitous" "\
+(autoload 'ido-ubiquitous-mode "ido-ubiquitous" "\
 Use `ido-completing-read' instead of `completing-read' almost everywhere.
 
   This mode has no effect unles `ido-mode' is also enabled.
@@ -31,6 +31,10 @@ Use `ido-completing-read' instead of `completing-read' almost everywhere.
 
 \(fn &optional ARG)" t nil)
 
+(define-obsolete-variable-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
+
+(define-obsolete-function-alias 'ido-ubiquitous 'ido-ubiquitous-mode "0.8")
+
 (defvar ido-ubiquitous-command-exceptions 'nil "\
 List of commands that should not be affected by `ido-ubiquitous'.
 
@@ -44,18 +48,26 @@ ido-ubiquitous in non-interactive functions, customize
 
 (custom-autoload 'ido-ubiquitous-command-exceptions "ido-ubiquitous" t)
 
+(define-obsolete-variable-alias 'ido-ubiquitous-exceptions 'ido-ubiquitous-command-exceptions "0.4")
+
 (defvar ido-ubiquitous-function-exceptions '(grep-read-files) "\
 List of functions in which to disable ido-ubiquitous.
 
-Certain functions, such as `read-file-name', always have
-ido-ubiquitous disabled, and cannot be added here. (They are
-effectively permanently part of this list already.)")
+If you need to add a function to this list, please also file a
+bug report at
+https://github.com/DarwinAwardWinner/ido-ubiquitous/issues
+
+Note that certain functions, such as `read-file-name', must
+always have ido-ubiquitous disabled, and cannot be added
+here. (They are effectively a permanent part of this list
+already.)")
 
 (custom-autoload 'ido-ubiquitous-function-exceptions "ido-ubiquitous" nil)
 
 ;;;***
 
-;;;### (autoloads nil nil ("ido-ubiquitous-pkg.el") (20148 507 880253))
+;;;### (autoloads nil nil ("ido-ubiquitous-pkg.el") (20548 46118
+;;;;;;  647570))
 
 ;;;***
 

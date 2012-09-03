@@ -3,7 +3,7 @@
 
 ;; Author: Ryan C. Thompson
 ;; URL: https://github.com/DarwinAwardWinner/ido-ubiquitous
-;; Version: 0.7
+;; Version: 1.3
 ;; Created: 2011-09-01
 ;; Keywords: convenience
 ;; EmacsWiki: InteractivelyDoThings
@@ -22,6 +22,17 @@
 
 ;; This even works in M-x, but for that, you might prefer the "smex"
 ;; package instead.
+
+;; As of version 0.7, this package also makes a small modification to
+;; ido's behavior so as to support a strange corner case of
+;; `completing-read' that some functions rely on. Since the goal of
+;; this package is to replace `completing-read' everywhere instead of
+;; just selectively (as ido itself does), compatibility with all the
+;; quriks of `completing-read' is important here.
+
+;; If you find a case where enabling ido-ubiquitous causes a command
+;; not to work correctly, please report it by creating an issue on
+;; GitHub: https://github.com/DarwinAwardWinner/ido-ubiquitous/issues
 
 ;;; License:
 
@@ -50,7 +61,7 @@
   :group 'ido)
 
 ;;;###autoload
-(define-minor-mode ido-ubiquitous
+(define-minor-mode ido-ubiquitous-mode
   "Use `ido-completing-read' instead of `completing-read' almost everywhere.
 
   This mode has no effect unles `ido-mode' is also enabled.
@@ -68,6 +79,13 @@
   :group 'ido-ubiquitous)
 
 ;;;###autoload
+(define-obsolete-variable-alias 'ido-ubiquitous
+  'ido-ubiquitous-mode "0.8")
+;;;###autoload
+(define-obsolete-function-alias 'ido-ubiquitous
+  'ido-ubiquitous-mode "0.8")
+
+;;;###autoload
 (defcustom ido-ubiquitous-command-exceptions '()
   "List of commands that should not be affected by `ido-ubiquitous'.
 
@@ -81,12 +99,13 @@ ido-ubiquitous in non-interactive functions, customize
   :type '(repeat (symbol :tag "Command"))
   :group 'ido-ubiquitous)
 
+;;;###autoload
 (define-obsolete-variable-alias 'ido-ubiquitous-exceptions
   'ido-ubiquitous-command-exceptions "0.4")
 
 (defadvice completing-read (around ido-ubiquitous activate)
   (if (or (not ido-mode)
-          (not ido-ubiquitous)
+          (not ido-ubiquitous-mode)
           (memq this-command ido-ubiquitous-command-exceptions)
           ;; Avoid infinite recursion from ido calling completing-read
           (boundp 'ido-cur-item))
@@ -106,7 +125,7 @@ ido-ubiquitous in non-interactive functions, customize
          (format "Disable ido-ubiquitous in %s" func)))
     `(defadvice ,func (around disable-ido-ubiquitous activate)
        ,docstring
-       (let (ido-ubiquitous) ad-do-it))))
+       (let (ido-ubiquitous-mode) ad-do-it))))
 
 (define-obsolete-function-alias
   'disable-ido-ubiquitous-in
@@ -137,12 +156,15 @@ ido-ubiquitous in non-interactive functions, customize
 ;; Always disable ido-ubiquitous in `find-file' and similar functions,
 ;; because they are not supposed to use ido.
 (defvar ido-ubiquitous-permanent-function-exceptions
-  '(read-file-name)
+  '(read-file-name
+    gnus-emacs-completing-read
+    gnus-iswitchb-completing-read
+    man)
   "Functions in which ido-ubiquitous should always be disabled.
 
 If you want to disable ido in a specific function or command, do
 not modify this variable. Instead, try `M-x customize-group
-ido-ubiquitous..")
+ido-ubiquitous.")
 
 (dolist (func ido-ubiquitous-permanent-function-exceptions)
   (eval `(ido-ubiquitous-disable-in ,func)))
@@ -173,27 +195,97 @@ ido-ubiquitous..")
   '(grep-read-files)
   "List of functions in which to disable ido-ubiquitous.
 
-Certain functions, such as `read-file-name', always have
-ido-ubiquitous disabled, and cannot be added here. (They are
-effectively permanently part of this list already.)"
+If you need to add a function to this list, please also file a
+bug report at
+https://github.com/DarwinAwardWinner/ido-ubiquitous/issues
+
+Note that certain functions, such as `read-file-name', must
+always have ido-ubiquitous disabled, and cannot be added
+here. (They are effectively a permanent part of this list
+already.)"
   :group 'ido-ubiquitous
   :type '(repeat :tag "Functions"
                  (symbol :tag "Function"))
   :set 'ido-ubiquitous-set-function-exceptions)
 
+(defcustom ido-ubiquitous-enable-compatibility t
+  "Emulate a quirk of `completing-read'.
+
+In the past, the `completing-read' function had no way of
+specifying a default item, so instead the convention was to
+request the default by returning an empty string. This occurrs in
+standard emacs completion system when you press \"RET\" without
+typing anything first. This is a problem for ido completion
+because when ido is used this way, it does not know which item is
+the default, so it cannot put the default at the head of the
+list. Hence, simply pressing \"RET\" will not properly select the
+advertised default. Setting this variable to non-nil will force
+ido to emulate this quirk of the standard emacs completion system
+in order to maintain compatibility with old functions that still
+use the empty-string-as-default convention.
+
+Specifically, when this variable is non-nil, ido will return an
+empty string (thereby requesting the default) if you press \"RET\"
+without entering any text or cycling through the offered choices.
+This replaces the standard ido behavior of returning the first
+item on the list. Enabling this option improves compatibility
+with many older functions that use `completing-read' in this way,
+but may also break compatibility with others, since it changes
+what ido returns.
+
+If you want this enabled most of the time but once in a while you
+really want to select the first item on the list, you can do so
+by prefixing \"RET\" with \"C-u\".
+
+This has no effect when ido is completing buffers or files."
+  :type 'boolean
+  :group 'ido-ubiquitous)
+
+(defvar ido-ubiquitous-initial-item nil
+  "The first item selected when ido starts.")
+
+(defadvice ido-read-internal (before clear-initial-item activate)
+  (setq ido-ubiquitous-initial-item nil))
+
+(defadvice ido-make-choice-list (after set-initial-item activate)
+  (when (and ad-return-value (listp ad-return-value))
+    (setq ido-ubiquitous-initial-item (car ad-return-value))))
+
+(defadvice ido-next-match (after clear-initial-item activate)
+  (setq ido-ubiquitous-initial-item nil))
+
+(defadvice ido-prev-match (after clear-initial-item activate)
+  (setq ido-ubiquitous-initial-item nil))
+
 (defadvice ido-exit-minibuffer (around required-allow-empty-string activate)
   "Emulate a quirk of `completing-read'.
 
-Apparently, `completing-read' used to request the default item by
-returning an empty string when RET was pressed with an empty input.
-This forces `ido-completing-read' to do the same (instead of returning
-the first choice in the list).
+Apparently, in the past `completing-read' used to request the
+default item by returning an empty string when RET was pressed
+with an empty input. This forces `ido-completing-read' to do the
+same (instead of returning the first choice in the list),
+allowing the default to be properly selected.
 
-This has no effect when ido is completing buffers or files."
-  (if (and (eq ido-cur-item 'list)
+This has no effect when ido is completing buffers or files.
+
+This behavior is disabled by setting
+`ido-ubiquitous-enable-compatibility' to nil."
+  (if (and ido-ubiquitous-enable-compatibility
+           (eq ido-cur-item 'list)
            ido-require-match
-           (string= ido-text ""))
+           (null ido-default-item)
+           (not current-prefix-arg)
+           (string= ido-text "")
+           (string= (car ido-cur-list)
+                    ido-ubiquitous-initial-item))
       (ido-select-text)
+    ad-do-it))
+
+(defadvice bookmark-completing-read (around disable-ido-compatibility activate)
+  "`bookmark-completing-read' uses `completing-read' in an odd
+  way that conflicts with the compatibilty mode of
+  ido-ubiquitous."
+  (let (ido-ubiquitous-enable-compatibility)
     ad-do-it))
 
 (provide 'ido-ubiquitous) ;;; ido-ubiquitous.el ends here
