@@ -1,13 +1,12 @@
-
 ;;; find-file-in-project.el --- Find files in a project quickly.
 
-;; Copyright (C) 2006-2009, 2011
+;; Copyright (C) 2006-2009, 2011-2012
 ;;   Phil Hagelberg, Doug Alcorn, and Will Farrington
 
 ;; Author: Phil Hagelberg, Doug Alcorn, and Will Farrington
 ;; URL: http://www.emacswiki.org/cgi-bin/wiki/FindFileInProject
 ;; Git: git://github.com/technomancy/find-file-in-project.git
-;; Version: 3.0
+;; Version: 3.2
 ;; Created: 2008-03-18
 ;; Keywords: project, convenience
 ;; EmacsWiki: FindFileInProject
@@ -64,7 +63,7 @@
 (defvar ffip-project-file ".git"
   "The file that should be used to define a project root.
 
-May be set using .dir-locals.el.")
+May be set using .dir-locals.el. Checks each entry if set to a list.")
 
 (defvar ffip-patterns
   '("*.html" "*.org" "*.txt" "*.md" "*.el" "*.clj" "*.py" "*.rb" "*.js" "*.pl"
@@ -87,20 +86,26 @@ This overrides variable `ffip-project-root' when set.")
 (defvar ffip-limit 512
   "Limit results to this many files.")
 
+(defvar ffip-full-paths nil
+  "If non-nil, show fully project-relative paths.")
+
 (defun ffip-project-root ()
   "Return the root of the project."
   (let ((project-root (or ffip-project-root
                           (if (functionp ffip-project-root-function)
                               (funcall ffip-project-root-function)
-                            (locate-dominating-file default-directory
-                                                    ffip-project-file)))))
+                            (if (listp ffip-project-file)
+                                (some (apply-partially 'locate-dominating-file
+                                                       default-directory)
+                                      ffip-project-file)
+                              (locate-dominating-file default-directory
+                                                      ffip-project-file))))))
     (or project-root
         (progn (message "No project was defined for the current file.")
                nil))))
 
 (defun ffip-uniqueify (file-cons)
   "Set the car of FILE-CONS to include the directory name plus the file name."
-  ;; TODO: see if we can use uniquify.el
   (setcar file-cons
           (concat (cadr (reverse (split-string (cdr file-cons) "/"))) "/"
                   (car file-cons))))
@@ -115,23 +120,24 @@ This overrides variable `ffip-project-root' when set.")
 
 Files with duplicate filenames are suffixed with the name of the
 directory they are found in so that they are unique."
-  (let ((file-alist nil))
+  (let ((file-alist nil)
+        (root (expand-file-name (or ffip-project-root (ffip-project-root)
+                                    (error "No project root found")))))
     (mapcar (lambda (file)
-              (let ((file-cons (cons (file-name-nondirectory file)
-                                     (expand-file-name file))))
-                (when (assoc (car file-cons) file-alist)
-                  (ffip-uniqueify (assoc (car file-cons) file-alist))
-                  (ffip-uniqueify file-cons))
-                (add-to-list 'file-alist file-cons)
-                file-cons))
+              (if ffip-full-paths
+                  (cons (substring (expand-file-name file) (length root))
+                        (expand-file-name file))
+                (let ((file-cons (cons (file-name-nondirectory file)
+                                       (expand-file-name file))))
+                  (when (assoc (car file-cons) file-alist)
+                    (ffip-uniqueify (assoc (car file-cons) file-alist))
+                    (ffip-uniqueify file-cons))
+                  (add-to-list 'file-alist file-cons)
+                  file-cons)))
             (split-string (shell-command-to-string
                            (format "find %s -type f \\( %s \\) %s | head -n %s"
-                                   (or ffip-project-root
-                                       (ffip-project-root)
-                                       (error "No project root found"))
-                                   (ffip-join-patterns)
-                                   ffip-find-options
-                                   ffip-limit))))))
+                                   root (ffip-join-patterns)
+                                   ffip-find-options ffip-limit))))))
 
 ;;;###autoload
 (defun find-file-in-project ()
