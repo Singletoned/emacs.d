@@ -46,7 +46,7 @@
 (global-linum-mode t)
 (show-paren-mode t)
 (set-default 'indicate-empty-lines t)
-
+(delete-selection-mode nil)
 (tool-bar-mode -1)
 
 (set-default 'indent-tabs-mode nil)
