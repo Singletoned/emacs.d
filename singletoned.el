@@ -1,5 +1,7 @@
 (server-start)
 
+(set 'confirm-kill-emacs `yes-or-no-p)
+
 ;; Set shell path
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
