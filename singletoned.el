@@ -16,7 +16,7 @@
 (require 'centered-cursor-mode)
 (require 'rect-mark)
 (require 'yasnippet)
-
+(require 'scratch)
 (require 'eproject)
 (require 'eproject-extras)
 
