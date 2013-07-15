@@ -1,5 +1,10 @@
 (server-start)
 
+;; Set shell path
+
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 ;; Load Path
 
 (add-to-list 'load-path (concat user-emacs-directory "yasnippet"))
