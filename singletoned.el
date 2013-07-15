@@ -10,7 +10,8 @@
 
 (require 'saveplace)
 (require 'whitespace)
-(require 'autopair)
+(require 'smartparens)
+(require 'smartparens-config)
 (require 'uniquify)
 (require 'centered-cursor-mode)
 (require 'rect-mark)
@@ -103,17 +104,12 @@
 nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
        1 font-lock-warning-face t)))
 
-;; Autopair
 
-(autopair-global-mode)
-(set-default 'delete-selection-mode nil)
-(set 'autopair-autowrap t)
-(add-hook 'paredit-mode-hook #'(lambda () (setq autopair-dont-activate t)))
-(add-hook 'python-mode-hook
-          #'(lambda ()
-              (setq autopair-handle-action-fns
-                    (list #'autopair-default-handle-action
-                          #'autopair-python-triple-quote-action))))
+;; SmartParens
+
+(smartparens-global-mode 1)
+
+(set-default 'sp-autoescape-string-quote nil)
 
 
 ;; YASnippet
