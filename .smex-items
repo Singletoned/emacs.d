@@ -1,0 +1,73 @@
+
+;; ----- smex-history -----
+(
+ occur
+ scratch
+ whitespace-cleanup
+ find-dired
+ package-list-packages
+ yas/visit-snippet-file
+ yas/reload-all
+)
+
+;; ----- smex-data -----
+(
+ (comment-region . 2)
+ (find-dired . 83)
+ (vc-resolve-conflicts . 61)
+ (indent-rigidly . 28)
+ (occur . 128)
+ (whitespace-cleanup . 57)
+ (scratch . 181)
+ (package-list-packages . 23)
+ (eval-defun . 5)
+ (balance-windows . 2)
+ (indent-region . 10)
+ (server-start . 1)
+ (wdired-change-to-wdired-mode . 7)
+ (dired-do-touch . 1)
+ (eproject-kill-project-buffers . 4)
+ (ucs-insert . 3)
+ (dired-dwim-copy . 61)
+ (text-mode . 2)
+ (package-list-packages-no-fetch . 4)
+ (camelscore-word-at-point . 2)
+ (sgml-pretty-print . 2)
+ (php-mode . 1)
+ (set-variable . 2)
+ (find-variable . 1)
+ (eval-expression . 6)
+ (jade-mode . 5)
+ (revert-buffer . 5)
+ (yas/new-snippet . 7)
+ (yas/reload-all . 2)
+ (yas/expand . 1)
+ (yaml-mode . 1)
+ (delete-char . 1)
+ (yank-rectangle . 4)
+ (rm-kill-ring-save . 1)
+ (describe-variable . 2)
+ (sort-lines . 2)
+ (rot13-region . 6)
+ (color-theme-sanityinc-tomorrow-night . 1)
+ (color-theme-sanityinc-tomorrow-eighties . 1)
+ (zencoding-expand-yas . 2)
+ (zencoding-expand-line . 1)
+ (calc-grab-sum-down . 2)
+ (conf-unix-mode . 1)
+ (recover-this-file . 1)
+ (insert-char . 7)
+ (smartparens-mode . 6)
+ (customize-variable . 1)
+ (list-coding-systems . 1)
+ (query-replace-regexp . 1)
+ (dired-do-find-marked-files . 4)
+ (start-kbd-macro . 1)
+ (python-menu . 1)
+ (markdown-mode . 1)
+ (paredit-mode . 2)
+ (sp-forward-slurp-sexp . 1)
+ (butterfly . 1)
+ (yas/visit-snippet-file . 1)
+ (dired-do-command . 1)
+)

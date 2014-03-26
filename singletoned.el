@@ -2,6 +2,8 @@
 
 (set 'confirm-kill-emacs `yes-or-no-p)
 
+(set-default-font "Inconsolata 15")
+
 ;; Set shell path
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
@@ -11,7 +13,9 @@
 
 (add-to-list 'load-path (concat user-emacs-directory "yasnippet"))
 (add-to-list 'load-path (concat user-emacs-directory "eproject"))
+(add-to-list 'load-path (concat user-emacs-directory "elpa-to-submit"))
 
+(require 'zencoding-mode)
 
 ;; Requirements
 
@@ -34,6 +38,17 @@
 (require 'sws-mode)
 (require 'jade-mode)
 
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+
 ;; Colors
 
 (set 'custom-safe-themes
@@ -47,6 +62,8 @@
 
 
 ;; Config
+
+;(modify-syntax-entry ?_ "w" python-mode-syntax-table)
 
 (global-hl-line-mode t)
 (set-default 'hl-line-sticky-flag nil)
@@ -68,6 +85,8 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
+(ansi-color-for-comint-mode-on)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq visible-bell t
@@ -179,6 +198,10 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
         try-complete-file-name
         try-expand-all-abbrevs))
 
+;; Hippie expand: at times perhaps too hip
+(dolist (f '(try-expand-line try-expand-list try-complete-file-name-partially))
+  (delete f hippie-expand-try-functions-list))
+
 
 ;; Ido mode
 
@@ -216,7 +239,7 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
+(global-set-key (kbd "C-x C-j") 'dired-jump)
 
 ;; Some Yegge-isations
 (global-set-key (kbd "s-h") 'help-command)
@@ -321,6 +344,42 @@ Else, call `comment-or-uncomment-region' on the whole line"
 
 ;; Stolen functions
 
+;; (defun underscore-region ()
+;;   (interactive)
+;;   (let ((deactivate-mark nil)
+;;         (beg (and mark-active (region-beginning)))
+;;         (end (and mark-active (region-end)))
+        
+;; ))
+
+;;  )
+
+;; (defun split-name (s)
+;;   (split-string
+;;    (let ((case-fold-search nil))
+;;      (downcase
+;;       (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
+;;    "[^A-Za-z0-9]+"))
+
+;; (defun camelcase  (s) (mapconcat 'capitalize (split-name s) ""))
+;; (defun underscore (s) (mapconcat 'downcase   (split-name s) "_"))
+;; (defun dasherize  (s) (mapconcat 'downcase   (split-name s) "-"))
+;; (defun colonize   (s) (mapconcat 'capitalize (split-name s) "::"))
+
+;;     (defun camelscore (s)	
+;;       (cond ((string-match-p "\:"  s)	(camelcase s))
+;; 	    ((string-match-p "-" s)     (colonize s))
+;; 	    ((string-match-p "_" s)	(dasherize s))
+;; 	    (t                          (underscore s)) ))
+
+;;     (defun camelscore-word-at-point ()
+;;       (interactive)
+;;       (let* ((case-fold-search nil)
+;; 	     (beg (and (skip-chars-backward "[:alnum:]:_-") (point)))
+;; 	     (end (and (skip-chars-forward  "[:alnum:]:_-") (point)))
+;; 	     (txt (buffer-substring beg end))
+;; 	     (cml (camelscore txt)) )
+;; 	(if cml (progn (delete-region beg end) (insert cml))) ))
 
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
@@ -349,3 +408,29 @@ Else, call `comment-or-uncomment-region' on the whole line"
   (set (make-local-variable 'paredit-space-for-delimiter-predicates)
        '((lambda (endp delimiter) nil)))
   (paredit-mode t))
+
+(defun dired-do-command (command)
+  "Run COMMAND on marked files. Any files not already open will be opened.
+After this command has been run, any buffers it's modified will remain
+open and unsaved."
+  (interactive
+   (list
+    (let ((print-level nil)
+          (minibuffer-history-position 0)
+          (minibuffer-history-sexp-flag (1+ (minibuffer-depth))))
+      (unwind-protect
+          (read-from-minibuffer
+           "Command: " (prin1-to-string (nth 0 command-history))
+           read-expression-map t
+           (cons 'command-history 0))
+
+        ;; If command was added to command-history as a
+        ;; string, get rid of that.  We want only
+        ;; evaluable expressions there.
+        (if (stringp (car command-history))
+            (setq command-history (cdr command-history)))))))
+  (dolist (filename (dired-get-marked-files))
+    (with-current-buffer (find-file-noselect filename)
+      (if (symbolp command)
+          (call-interactively command)
+        (eval command)))))
