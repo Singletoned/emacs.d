@@ -5,6 +5,37 @@
         ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar prelude-packages
+  '(
+    centered-cursor-mode
+    deft
+    jade-mode
+    gist
+    ido-ubiquitous
+    magit
+    markdown-mode
+    paredit
+    projectile
+    rect-mark
+    sass-mode
+    scratch
+    scss-mode
+    smartparens
+    smex
+    sws-mode
+    web-mode
+    yaml-mode
+    yasnippet
+    zencoding-mode)
+  "A list of packages to ensure are installed at launch.")
+
+(dolist (p prelude-packages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
 (setq system-config (concat user-emacs-directory system-name ".el")
       user-config (concat user-emacs-directory user-login-name ".el"))
 
