@@ -11,7 +11,6 @@
 
 ;; Load Path
 
-(add-to-list 'load-path (concat user-emacs-directory "yasnippet"))
 (add-to-list 'load-path (concat user-emacs-directory "eproject"))
 (add-to-list 'load-path (concat user-emacs-directory "elpa-to-submit"))
 
