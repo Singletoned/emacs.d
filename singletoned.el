@@ -27,8 +27,6 @@
 (require 'rect-mark)
 (require 'yasnippet)
 (require 'scratch)
-(require 'eproject)
-(require 'eproject-extras)
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -151,33 +149,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 
 (set-default 'yas/trigger-key "M-§")
 (set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet/snippets"))
-(yas/initialize)
-
-
-;; EProject
-
-(define-project-type git (generic)
-  (look-for ".git")
-  :list-project-files (lambda (root) (lambda (root file) (eproject-list-project-files-git root))))
-
-(defun* eproject-list-project-files-git (&optional (root (eproject-root)))
-  (mapcar (lambda (name) (concat root name))
-          (split-string
-           (shell-command-to-string
-            (concat "git --git-dir=" root ".git ls-files")))))
-
-(define-project-type python (generic)
-  (look-for "setup.py"))
-
-(define-project-type bzr (generic)
-  (look-for ".bzr"))
-
-(set 'eproject-completing-read-function 'eproject--ido-completing-read)
-
-(global-set-key (kbd "C-x p RET") 'eproject-revisit-project)
-(global-set-key (kbd "C-x p o") 'eproject-find-file)
-(global-set-key (kbd "C-x p b") 'eproject-ibuffer)
-(global-set-key (kbd "C-x p r") (lambda () (interactive) (find-file (eproject-root))))
 
 
 ;; HippieExpand Completion
