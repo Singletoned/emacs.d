@@ -8,9 +8,10 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar prelude-packages
+(defvar my-packages
   '(
     centered-cursor-mode
+    dash
     deft
     jade-mode
     gist
@@ -51,5 +52,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
 (when (file-exists-p system-config) (load system-config))
 (when (file-exists-p user-config) (load user-config))

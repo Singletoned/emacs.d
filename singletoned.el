@@ -9,13 +9,6 @@
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-;; Load Path
-
-(add-to-list 'load-path (concat user-emacs-directory "eproject"))
-(add-to-list 'load-path (concat user-emacs-directory "elpa-to-submit"))
-
-(require 'zencoding-mode)
-
 ;; Requirements
 
 (require 'saveplace)
@@ -27,6 +20,9 @@
 (require 'rect-mark)
 (require 'yasnippet)
 (require 'scratch)
+(require 'flx-ido)
+(require 'projectile)
+(require 'magit)
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -124,6 +120,11 @@
 (set-default 'python-indent-guess-indent-offset nil)
 
 
+;; Fewer Garbage collections
+
+(setq gc-cons-threshold 20000000)
+
+
 ;; Extra Keywords
 
 (font-lock-add-keywords
@@ -151,6 +152,34 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet/snippets"))
 
 
+;; Projectile
+
+(projectile-global-mode)
+
+;; (define-project-type git (generic)
+;;   (look-for ".git")
+;;   :list-project-files (lambda (root) (lambda (root file) (eproject-list-project-files-git root))))
+
+;; (defun* eproject-list-project-files-git (&optional (root (eproject-root)))
+;;   (mapcar (lambda (name) (concat root name))
+;;           (split-string
+;;            (shell-command-to-string
+;;             (concat "git --git-dir=" root ".git ls-files")))))
+
+;; (define-project-type python (generic)
+;;   (look-for "setup.py"))
+
+;; (define-project-type bzr (generic)
+;;   (look-for ".bzr"))
+
+;; (set 'eproject-completing-read-function 'eproject--ido-completing-read)
+
+;; (global-set-key (kbd "C-x p RET") 'eproject-)
+(global-set-key (kbd "C-x p o") 'projectile-find-file-other-window)
+;; (global-set-key (kbd "C-x p b") 'eproject-ibuffer)
+;; (global-set-key (kbd "C-x p r") (lambda () (interactive) (find-file (eproject-root))))
+
+
 ;; HippieExpand Completion
 
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -176,6 +205,11 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 ;; Ido mode
 
 (ido-mode t)
+(ido-everywhere t)
+(flx-ido-mode t)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+
 (ido-ubiquitous t)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
