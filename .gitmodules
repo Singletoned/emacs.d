@@ -4,3 +4,6 @@
 [submodule "eproject"]
 	path = eproject
 	url = https://github.com/Singletoned/eproject.git
+[submodule "yasnippet-snippets"]
+	path = yasnippet-snippets
+	url = git@github.com:Singletoned/yasnippet-snippets.git
