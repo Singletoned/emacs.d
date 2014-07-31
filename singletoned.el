@@ -438,3 +438,21 @@ open and unsaved."
       (if (symbolp command)
           (call-interactively command)
         (eval command)))))
+
+(defun html-escape ()
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (let
+          ((deactivate-mark nil)
+           (beg (and mark-active (region-beginning)))
+           (end (and mark-active (region-end))))
+        (if (and beg end)
+            (progn
+              (narrow-to-region beg end)))
+        (goto-char (point-min))
+        (replace-string "’" "&rsquo;")
+        (goto-char (point-min))
+        (replace-string "£" "&pound;")
+        (goto-char (point-min))
+        (replace-string "’" "&lsquo;")))))
