@@ -13,6 +13,7 @@
     centered-cursor-mode
     dash
     deft
+    expand-region
     jade-mode
     gist
     ido-ubiquitous
