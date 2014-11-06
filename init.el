@@ -14,6 +14,7 @@
     dash
     deft
     expand-region
+    flx-ido
     jade-mode
     gist
     ido-ubiquitous
