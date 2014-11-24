@@ -23,6 +23,7 @@
 (require 'flx-ido)
 (require 'projectile)
 (require 'magit)
+(require 'expand-region)
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -138,6 +139,10 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 
+
+;; Expand Region
+
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; SmartParens
 
