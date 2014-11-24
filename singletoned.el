@@ -154,7 +154,7 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 ;; YASnippet
 
 (set-default 'yas/trigger-key "M-§")
-(set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet/snippets"))
+(set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet-snippets"))
 
 
 ;; Projectile
