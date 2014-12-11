@@ -99,6 +99,15 @@
       backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
       diff-switches "-u")
 
+;; Dired
+
+(eval-after-load "dired"
+  '(require 'dired-x))
+
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (dired-omit-mode 1)))
+
 
 ;; Centered Cursor
 
