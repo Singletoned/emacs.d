@@ -84,6 +84,8 @@
 (setq default-buffer-file-coding-system 'utf-8)
 (ansi-color-for-comint-mode-on)
 
+(set-default 'electric-indent-mode nil)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (setq visible-bell t
