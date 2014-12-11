@@ -65,6 +65,7 @@
 (global-hl-line-mode t)
 (set-default 'hl-line-sticky-flag nil)
 (global-linum-mode t)
+(set-default 'linum-format "%3d")
 (show-paren-mode t)
 (set-default 'indicate-empty-lines t)
 (delete-selection-mode nil)
