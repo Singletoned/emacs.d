@@ -2,7 +2,7 @@
 
 (set 'confirm-kill-emacs `yes-or-no-p)
 
-(set-default-font "Inconsolata 15")
+(set-default-font "Inconsolata 14")
 
 ;; Set shell path
 
