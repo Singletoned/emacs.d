@@ -228,6 +228,10 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10)
 
+;; Powerline
+
+(powerline-center-theme)
+
 
 ;; RectMark
 

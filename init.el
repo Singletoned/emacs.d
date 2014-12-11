@@ -21,6 +21,7 @@
     magit
     markdown-mode
     paredit
+    powerline
     projectile
     rect-mark
     sass-mode
