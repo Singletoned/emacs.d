@@ -109,6 +109,10 @@
           (lambda ()
             (dired-omit-mode 1)))
 
+(require 'ls-lisp)
+(setq ls-lisp-use-insert-directory-program nil)
+(setq ls-lisp-verbosity nil)
+
 
 ;; Centered Cursor
 
