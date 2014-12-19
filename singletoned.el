@@ -280,6 +280,8 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
+(global-set-key (kbd "C-x ~") (lambda () (interactive) (dired-other-window user-emacs-directory)))
+
 ;; Some Yegge-isations
 (global-set-key (kbd "s-h") 'help-command)
 (global-set-key (kbd "C-h") 'backward-delete-char)
