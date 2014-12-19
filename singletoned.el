@@ -278,7 +278,8 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x C-j") 'dired-jump)
+(global-set-key (kbd "C-x j") 'dired-jump)
+(global-set-key (kbd "C-x C-J") 'dired-jump-other-window)
 
 (global-set-key (kbd "C-x ~") (lambda () (interactive) (dired-other-window user-emacs-directory)))
 
