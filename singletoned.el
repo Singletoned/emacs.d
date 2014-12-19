@@ -252,6 +252,9 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 
 (powerline-center-theme)
 
+;; Auto-Complete
+(require 'auto-complete)
+(global-auto-complete-mode t)
 
 ;; RectMark
 
