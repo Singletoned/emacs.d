@@ -332,6 +332,54 @@ Else, call `comment-or-uncomment-region' on the whole line"
               (insert (comment-padleft comment-end add)))
             (indent-according-to-mode)))))))
 
+(defconst my-indent-var-list
+  '((emacs-lisp-mode lisp-indent-offset)
+    (lisp-mode lisp-indent-offset)
+    (c-mode c-basic-offset)
+    (c++-mode c-basic-offset)
+    (objc-mode c-basic-offset)
+    (java-mode c-basic-offset)
+    (idl-mode c-basic-offset)
+    (pike-mode c-basic-offset)
+    (awk-mode c-basic-offset)
+    (cmake-mode cmake-tab-width)
+    (coffee-mode coffee-tab-width)
+    (cperl-mode cperl-indent-level)
+    (css-mode css-indent-offset)
+    (haskell-mode haskell-indent-offset)
+    (js-mode js-indent-level)
+    (json-mode js-indent-level)
+    (js2-mode js2-basic-offset)
+    (js3-mode js3-indent-level)
+    (perl-mode perl-indent-level)
+    (python-mode python-indent)
+    (ruby-mode ruby-indent-level)
+    (sh-mode sh-basic-offset sh-indentation)
+    (nxml-mode nxml-child-indent)
+    (sgml-mode sgml-basic-offset)
+    (livescript-mode livescript-tab-width)
+    (mustache-mode mustache-basic-offset)
+    (scala-mode scala-indent:step)
+    (groovy-mode c-basic-offset)
+    (web-mode web-mode-indent-style)
+    (erlang-mode erlang-indent-level)))
+
+(defun my-get-indent-var ()
+  "Gets the name of the indentation variable for the current mode"
+  (let ((parent major-mode)
+        entry
+        indent-width)
+    ;; Find the closet parent mode of `major-mode' in
+    ;; `edconf-indentation-alist'.
+    (while (and
+            (not (setq entry (assoc parent my-indent-var-list)))
+            (setq parent (get parent 'derived-mode-parent))))
+    (if entry
+        (setq indent-width (eval (cadr entry))))
+    (if indent-width
+        indent-width
+      tab-width)))
+
 (defun indent-dwim ()
   "Indents to the next multiple of the tab spacing"
   (interactive)
