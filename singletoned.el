@@ -386,36 +386,38 @@ Else, call `comment-or-uncomment-region' on the whole line"
   (let ((deactivate-mark nil)
         (beg (and mark-active (region-beginning)))
         (end (and mark-active (region-end)))
-        (indentation-list))
+        (indentation-list)
+        (indent-width (my-get-indent-var)))
     (if (= (line-number-at-pos beg) (line-number-at-pos end))
-        (let ((indent-amount (mod (current-indentation) tab-width)))
+        (let ((indent-amount (mod (current-indentation) indent-width)))
           (if (> 0 indent-amount)
               (indent-line-to (+ indent-amount (current-indentation)))
-            (indent-line-to (+ tab-width (current-indentation)))))
+            (indent-line-to (+ indent-width (current-indentation)))))
       (save-excursion
         (goto-char beg)
         (while (< (point) end)
           (if (not (looking-at "\\s-*$"))
               (add-to-list 'indentation-list (current-indentation)))
           (forward-line)))
-      (let ((indent-amount (- tab-width (mod (apply 'min indentation-list) tab-width))))
+      (let ((indent-amount (- indent-width (mod (apply 'min indentation-list) indent-width))))
         (if (> 0 indent-amount)
             (indent-rigidly beg end indent-amount)
-          (indent-rigidly beg end tab-width))))))
+          (indent-rigidly beg end indent-width))))))
 
 (defun unindent-dwim (&optional count-arg)
- "Keeps relative spacing in the region.  Unindents to the next multiple of the current tab-width"
+ "Keeps relative spacing in the region.  Unindents to the next multiple of the current indent-width"
  (interactive)
  (let ((deactivate-mark nil)
        (beg (or (and mark-active (region-beginning)) (line-beginning-position)))
        (end (or (and mark-active (region-end)) (line-end-position)))
        (min-indentation)
-       (count (or count-arg 1)))
+       (count (or count-arg 1))
+       (indent-width (my-get-indent-var)))
    (if (= (line-number-at-pos beg) (line-number-at-pos end))
-       (let ((unindent-amount (mod (current-indentation) tab-width)))
+       (let ((unindent-amount (mod (current-indentation) indent-width)))
          (if (< 0 unindent-amount)
              (indent-line-to (- (current-indentation) unindent-amount))
-           (indent-line-to (- (current-indentation) tab-width))))
+           (indent-line-to (- (current-indentation) indent-width))))
      (save-excursion
        (goto-char beg)
        (while (< (point) end)
@@ -427,13 +429,13 @@ Else, call `comment-or-uncomment-region' on the whole line"
          (if (not (< 0 (apply 'min min-indentation)))
              (error "Can't indent any more.  Try `indent-rigidly` with a negative arg.")))
      (if (> 0 count)
-         (indent-rigidly beg end (* (- 0 tab-width) count))
+         (indent-rigidly beg end (* (- 0 indent-width) count))
        (let (
              (indent-amount
-              (apply 'min (mapcar (lambda (x) (- 0 (mod x tab-width))) min-indentation))))
+              (apply 'min (mapcar (lambda (x) (- 0 (mod x indent-width))) min-indentation))))
          (indent-rigidly beg end (or
                                   (and (< indent-amount 0) indent-amount)
-                                  (* (or count 1) (- 0 tab-width)))))))))
+                                  (* (or count 1) (- 0 indent-width)))))))))
 
 ;; Stolen functions
 
