@@ -20,7 +20,6 @@
 (require 'uniquify)
 (require 'centered-cursor-mode)
 (require 'rect-mark)
-(require 'yasnippet)
 (require 'scratch)
 (require 'flx-ido)
 (require 'projectile)
