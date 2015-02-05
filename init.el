@@ -41,6 +41,8 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+(load (concat user-emacs-directory "packages.el"))
+
 (setq system-config (concat user-emacs-directory system-name ".el")
       user-config (concat user-emacs-directory user-login-name ".el"))
 
