@@ -188,15 +188,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (set-default 'sp-autoescape-string-quote nil)
 
 
-;; YASnippet
-
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "M-§") 'yas-expand)
-
-(set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet-snippets"))
-
-(yas-global-mode)
 
 ;; Projectile
 

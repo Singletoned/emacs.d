@@ -9,3 +9,9 @@
           (add-to-list 'auto-mode-alist `(,(concat "\\." extension "\\'") . web-mode)))
   :config (setq web-mode-engines-alist '(("django" . "\\.html\\'"))))
 
+(use-package yasnippet
+  :config (progn
+            (set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet-snippets"))
+            (yas-global-mode)
+            (dolist (pair '(("<tab>" . nil) ("TAB" . nil) ("M-§" . yas-expand)))
+              (define-key yas-minor-mode-map (kbd (car pair)) (cdr pair)))))
