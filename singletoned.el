@@ -131,13 +131,6 @@
 (setq venv-location (file-name-as-directory (expand-file-name ".envs" "~")))
 
 
-;; Whitespace
-
-(set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
-(set 'whitespace-line-column 78)
-(global-whitespace-mode)
-
-
 ;; Tabs
 
 (set-default 'indent-tabs-mode nil)

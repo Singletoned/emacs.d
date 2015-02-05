@@ -20,3 +20,9 @@
   :config (progn
             (global-centered-cursor-mode t)
             (setq ccm-recenter-at-end-of-file t)))
+
+(use-package whitespace-mode
+  :config (progn
+            (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
+            (set 'whitespace-line-column 78)
+            (global-whitespace-mode)))
