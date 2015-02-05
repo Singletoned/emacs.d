@@ -26,3 +26,9 @@
             (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
             (set 'whitespace-line-column 78)
             (global-whitespace-mode)))
+
+(use-package virtualenvwrapper
+  :config (progn
+            (venv-initialize-interactive-shells) ;; if you want interactive shell support
+            (venv-initialize-eshell) ;; if you want eshell support
+            (setq venv-location (file-name-as-directory (expand-file-name ".envs" "~")))))

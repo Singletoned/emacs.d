@@ -123,13 +123,6 @@
 (setq ls-lisp-use-insert-directory-program nil)
 (setq ls-lisp-verbosity nil)
 
-;; Virtualenvwrapper
-
-(require 'virtualenvwrapper)
-(venv-initialize-interactive-shells) ;; if you want interactive shell support
-(venv-initialize-eshell) ;; if you want eshell support
-(setq venv-location (file-name-as-directory (expand-file-name ".envs" "~")))
-
 
 ;; Tabs
 
