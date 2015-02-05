@@ -31,9 +31,6 @@
     smartparens
     smex
     sws-mode
-    web-mode
-    yaml-mode
-    yasnippet
     zencoding-mode)
   "A list of packages to ensure are installed at launch.")
 
