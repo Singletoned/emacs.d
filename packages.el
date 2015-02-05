@@ -15,3 +15,8 @@
             (yas-global-mode)
             (dolist (pair '(("<tab>" . nil) ("TAB" . nil) ("M-§" . yas-expand)))
               (define-key yas-minor-mode-map (kbd (car pair)) (cdr pair)))))
+
+(use-package centered-cursor-mode
+  :config (progn
+            (global-centered-cursor-mode t)
+            (setq ccm-recenter-at-end-of-file t)))

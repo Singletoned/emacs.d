@@ -11,7 +11,6 @@
 
 (defvar my-packages
   '(
-    centered-cursor-mode
     dash
     deft
     expand-region

@@ -18,7 +18,6 @@
 (require 'smartparens)
 (require 'smartparens-config)
 (require 'uniquify)
-(require 'centered-cursor-mode)
 (require 'rect-mark)
 (require 'scratch)
 (require 'flx-ido)
@@ -130,11 +129,6 @@
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
 (venv-initialize-eshell) ;; if you want eshell support
 (setq venv-location (file-name-as-directory (expand-file-name ".envs" "~")))
-
-;; Centered Cursor
-
-(global-centered-cursor-mode t)
-(setq ccm-recenter-at-end-of-file t)
 
 
 ;; Whitespace
