@@ -32,3 +32,17 @@
             (venv-initialize-interactive-shells) ;; if you want interactive shell support
             (venv-initialize-eshell) ;; if you want eshell support
             (setq venv-location (file-name-as-directory (expand-file-name ".envs" "~")))))
+
+(use-package hippie-expand
+  :init (progn
+          (setq my-hippie-expand-line
+                (make-hippie-expand-function
+                 '(try-expand-line try-expand-line-all-buffers) t))
+          (setq hippie-expand-try-functions-list
+                '(try-expand-dabbrev
+                  try-expand-dabbrev-all-buffers
+                  try-expand-dabbrev-from-kill
+                  try-expand-all-abbrevs)))
+  :bind (("M-/" . hippie-expand)
+         ("§" . hippie-expand)
+         ("±" . my-hippie-expand-line)))

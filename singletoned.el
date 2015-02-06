@@ -196,28 +196,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 ;; (global-set-key (kbd "C-x p r") (lambda () (interactive) (find-file (eproject-root))))
 
 
-;; HippieExpand Completion
-
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "§") 'hippie-expand)
-
-(global-set-key (kbd "±") (make-hippie-expand-function
-                                          '(try-expand-line
-                                            try-expand-line-all-buffers) t))
-
-(setq hippie-expand-try-functions-list 
-      '(try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-complete-file-name-partially
-        try-complete-file-name
-        try-expand-all-abbrevs))
-
-;; Hippie expand: at times perhaps too hip
-(dolist (f '(try-expand-line try-expand-list try-complete-file-name-partially))
-  (delete f hippie-expand-try-functions-list))
-
-
 ;; Ido mode
 
 (ido-mode t)
