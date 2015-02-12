@@ -46,3 +46,8 @@
                   try-expand-all-abbrevs)))
   :bind (("M-/" . hippie-expand)
          ("§" . hippie-expand)))
+
+(use-package ls-lisp
+  :config (progn
+            (setq ls-lisp-use-insert-directory-program nil)
+            (setq ls-lisp-verbosity nil)))

@@ -119,10 +119,6 @@
            (dired-add-file new)
            (dired-move-to-filename))))))
 
-(require 'ls-lisp)
-(setq ls-lisp-use-insert-directory-program nil)
-(setq ls-lisp-verbosity nil)
-
 
 ;; Tabs
 
