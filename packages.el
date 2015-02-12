@@ -38,11 +38,11 @@
           (setq my-hippie-expand-line
                 (make-hippie-expand-function
                  '(try-expand-line try-expand-line-all-buffers) t))
+	            (bind-key "±" my-hippie-expand-line)
           (setq hippie-expand-try-functions-list
                 '(try-expand-dabbrev
                   try-expand-dabbrev-all-buffers
                   try-expand-dabbrev-from-kill
                   try-expand-all-abbrevs)))
   :bind (("M-/" . hippie-expand)
-         ("§" . hippie-expand)
-         ("±" . my-hippie-expand-line)))
+         ("§" . hippie-expand)))
