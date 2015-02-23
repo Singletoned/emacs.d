@@ -21,7 +21,6 @@
 (require 'rect-mark)
 (require 'scratch)
 (require 'flx-ido)
-(require 'projectile)
 (require 'magit)
 (require 'expand-region)
 
@@ -162,34 +161,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 
 (set-default 'sp-autoescape-string-quote nil)
 
-
-
-;; Projectile
-
-(projectile-global-mode)
-
-;; (define-project-type git (generic)
-;;   (look-for ".git")
-;;   :list-project-files (lambda (root) (lambda (root file) (eproject-list-project-files-git root))))
-
-;; (defun* eproject-list-project-files-git (&optional (root (eproject-root)))
-;;   (mapcar (lambda (name) (concat root name))
-;;           (split-string
-;;            (shell-command-to-string
-;;             (concat "git --git-dir=" root ".git ls-files")))))
-
-;; (define-project-type python (generic)
-;;   (look-for "setup.py"))
-
-;; (define-project-type bzr (generic)
-;;   (look-for ".bzr"))
-
-;; (set 'eproject-completing-read-function 'eproject--ido-completing-read)
-
-;; (global-set-key (kbd "C-x p RET") 'eproject-)
-(global-set-key (kbd "C-x p o") 'projectile-find-file-other-window)
-;; (global-set-key (kbd "C-x p b") 'eproject-ibuffer)
-;; (global-set-key (kbd "C-x p r") (lambda () (interactive) (find-file (eproject-root))))
 
 
 ;; Ido mode

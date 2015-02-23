@@ -51,3 +51,12 @@
   :config (progn
             (setq ls-lisp-use-insert-directory-program nil)
             (setq ls-lisp-verbosity nil)))
+
+(use-package projectile
+  :init (progn
+          (projectile-global-mode)
+          (set 'projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name)))))
+  :bind (("C-x p o" . projectile-find-file-other-window)))
+
+(use-package helm-projectile
+  :bind (("C-x p h". helm-projectile-find-file)))
