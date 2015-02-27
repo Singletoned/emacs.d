@@ -289,8 +289,7 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (coffee-mode coffee-tab-width)
     (cperl-mode cperl-indent-level)
     (css-mode css-indent-offset)
-    (emacs-lisp-mode lisp-indent-offset)
-    (erlang-mode erlang-indent-level))
+    (erlang-mode erlang-indent-level)
     (groovy-mode c-basic-offset)
     (haskell-mode haskell-indent-offset)
     (idl-mode c-basic-offset)
@@ -311,7 +310,8 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (scala-mode scala-indent:step)
     (sgml-mode sgml-basic-offset)
     (sh-mode sh-basic-offset sh-indentation)
-    (web-mode web-mode-indent-style))
+    (web-mode web-mode-indent-style)
+    (emacs-lisp-mode lisp-indent-offset)))
 
 (defun my-get-indent-var ()
   "Gets the name of the indentation variable for the current mode"
