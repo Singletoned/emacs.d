@@ -311,7 +311,8 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (sgml-mode sgml-basic-offset)
     (sh-mode sh-basic-offset sh-indentation)
     (web-mode web-mode-indent-style)
-    (emacs-lisp-mode lisp-indent-offset)))
+    (emacs-lisp-mode lisp-indent-offset)
+    (yaml-mode yaml-indent-offset)))
 
 (defun my-get-indent-var ()
   "Gets the name of the indentation variable for the current mode"
