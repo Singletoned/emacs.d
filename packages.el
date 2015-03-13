@@ -77,3 +77,11 @@
 (use-package discover
   :ensure t
   :init (global-discover-mode t))
+
+(use-package flycheck
+  :ensure t
+  :init (progn
+          (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
+          (setq flycheck-python-pyflakes-executable "~/.envs/emacs/bin/pyflakes")
+          (setq flycheck-idle-change-delay)
+          (global-flycheck-mode)))
