@@ -21,10 +21,11 @@
             (global-centered-cursor-mode t)
             (setq ccm-recenter-at-end-of-file t)))
 
-(use-package whitespace-mode
+(use-package whitespace
   :config (progn
             (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
             (set 'whitespace-line-column 78)
+            (setq whitespace-style '(face tabs trailing tab-mark))
             (global-whitespace-mode)))
 
 (use-package virtualenvwrapper
