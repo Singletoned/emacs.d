@@ -73,3 +73,7 @@
   :bind (
          ("C-s" . phi-search)
          ("C-r" . phi-search-backward)))
+
+(use-package discover
+  :ensure t
+  :init (global-discover-mode t))
