@@ -61,3 +61,9 @@
 
 (use-package helm-projectile
   :bind (("C-x p h". helm-projectile-find-file)))
+
+(use-package multiple-cursors
+  :init (multiple-cursors-mode)
+  :bind (
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)))
