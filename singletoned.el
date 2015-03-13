@@ -14,7 +14,6 @@
 ;; Requirements
 
 (require 'saveplace)
-(require 'whitespace)
 (require 'smartparens)
 (require 'smartparens-config)
 (require 'uniquify)
