@@ -14,8 +14,6 @@
 ;; Requirements
 
 (require 'saveplace)
-(require 'smartparens)
-(require 'smartparens-config)
 (require 'uniquify)
 (require 'rect-mark)
 (require 'scratch)
@@ -153,13 +151,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 ;; Expand Region
 
 (global-set-key (kbd "C-=") 'er/expand-region)
-
-;; SmartParens
-
-(smartparens-global-mode 1)
-
-(set-default 'sp-autoescape-string-quote nil)
-
 
 
 ;; Ido mode

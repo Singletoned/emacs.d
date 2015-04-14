@@ -26,7 +26,6 @@
     sass-mode
     scratch
     scss-mode
-    smartparens
     smex
     sws-mode
     zencoding-mode)

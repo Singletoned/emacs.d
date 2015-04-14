@@ -21,6 +21,14 @@
             (global-centered-cursor-mode t)
             (setq ccm-recenter-at-end-of-file t)))
 
+(use-package smartparens
+  :ensure t
+  :config (progn
+            (smartparens-global-mode 1)
+            (set-default 'sp-autoescape-string-quote nil))
+  :bind (("C-{" . sp-select-previous-thing)
+         ("C-}" . sp-select-next-thing)))
+
 (use-package whitespace
   :config (progn
             (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
