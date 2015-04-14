@@ -67,6 +67,16 @@
           (set 'projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name)))))
   :bind (("C-x p o" . projectile-find-file-other-window)))
 
+(use-package helm
+  :ensure t
+  :config (progn
+            (require 'helm-config)
+            (setq helm-buffer-max-length nil)
+            (define-key global-map [remap find-file] 'helm-find-files)
+            (define-key global-map [remap occur] 'helm-occur)
+            (define-key global-map [remap list-buffers] 'helm-buffers-list))
+  :bind (("M-x" . helm-M-x)
+         ("C-x b" . helm-buffers-list)))
 (use-package helm-projectile
   :bind (("C-x p h". helm-projectile-find-file)))
 
