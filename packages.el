@@ -104,3 +104,7 @@
           (setq flycheck-python-pyflakes-executable "~/.envs/emacs/bin/pyflakes")
           (setq flycheck-idle-change-delay 5)
           (global-flycheck-mode)))
+
+(use-package string-inflection
+  :ensure t
+  :bind ("C-c i" . string-inflection-cycle))
