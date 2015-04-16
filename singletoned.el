@@ -15,7 +15,6 @@
 
 (require 'saveplace)
 (require 'uniquify)
-(require 'rect-mark)
 (require 'scratch)
 (require 'flx-ido)
 (require 'magit)
@@ -180,13 +179,7 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (require 'auto-complete)
 (global-auto-complete-mode t)
 
-;; RectMark
 
-(global-set-key (kbd "C-x r C-SPC") 'rm-set-mark)
-(global-set-key (kbd "C-x r C-x") 'rm-exchange-point-and-mark)
-(global-set-key (kbd "C-x r C-k") 'rm-kill-region)
-(global-set-key (kbd "C-x r S-x") 'rm-kill-region)
-(global-set-key (kbd "C-x r S-c") 'rm-kill-ring-save)
 
 
 ;; Keyboard shortcuts
