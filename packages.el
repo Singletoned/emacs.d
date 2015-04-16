@@ -23,9 +23,11 @@
             (global-centered-cursor-mode t)
             (setq ccm-recenter-at-end-of-file t)))
 
-(use-package smartparens
-  :ensure t
-  :config (progn
+(use-package smartparens-mode
+  :ensure smartparens
+  :diminish smartparens-mode
+  :init (progn
+            (require 'smartparens-config)
             (smartparens-global-mode 1)
             (set-default 'sp-autoescape-string-quote nil))
   :bind (("C-{" . sp-select-previous-thing)
