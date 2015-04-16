@@ -10,6 +10,7 @@
   :config (setq web-mode-engines-alist '(("django" . "\\.html\\'"))))
 
 (use-package yasnippet
+  :ensure t
   :config (progn
             (set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet-snippets"))
             (yas-global-mode)
