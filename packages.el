@@ -18,6 +18,7 @@
               (define-key yas-minor-mode-map (kbd (car pair)) (cdr pair)))))
 
 (use-package centered-cursor-mode
+  :ensure t
   :config (progn
             (global-centered-cursor-mode t)
             (setq ccm-recenter-at-end-of-file t)))
