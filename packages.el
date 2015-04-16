@@ -99,6 +99,9 @@
          ("C-s" . phi-search)
          ("C-r" . phi-search-backward)))
 
+(use-package phi-search-mc
+  :bind (("C-c C-m" . phi-search-mc/mark-all)))
+
 (use-package discover
   :ensure t
   :init (global-discover-mode t))
