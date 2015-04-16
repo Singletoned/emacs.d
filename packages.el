@@ -117,10 +117,10 @@
   :ensure t
   :bind ("C-c i" . string-inflection-cycle))
 
-(use-package rect-mark
+(use-package phi-rectangle
+  :ensure t
   :bind (
-         ("C-x r C-SPC" . rm-set-mark)
-         ("C-x r C-x" . rm-exchange-point-and-mark)
-         ("C-x r C-k" . rm-kill-region)
-         ("C-x r S-x" . rm-kill-region)
-         ("C-x r S-c" . rm-kill-ring-save)))
+         ("C-x r C-SPC" . phi-rectangle-set-mark-command )
+         ;; ("C-x r C-x" . rm-exchange-point-and-mark)
+         ("C-x r C-k" . phi-rectangle-kill-region)
+         ("C-x r S-c" . phi-rectangle-kill-ring-save)))
