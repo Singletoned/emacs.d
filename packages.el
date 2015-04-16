@@ -34,6 +34,7 @@
          ("C-}" . sp-select-next-thing)))
 
 (use-package whitespace
+  :ensure t
   :config (progn
             (set 'whitespace-style '(trailing tabs lines-tail indentation::space face))
             (set 'whitespace-line-column 78)
