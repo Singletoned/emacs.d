@@ -124,3 +124,6 @@
          ;; ("C-x r C-x" . rm-exchange-point-and-mark)
          ("C-x r C-k" . phi-rectangle-kill-region)
          ("C-x r S-c" . phi-rectangle-kill-ring-save)))
+
+(use-package scratch
+  :ensure)

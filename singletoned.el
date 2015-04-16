@@ -15,7 +15,6 @@
 
 (require 'saveplace)
 (require 'uniquify)
-(require 'scratch)
 (require 'flx-ido)
 (require 'magit)
 (require 'expand-region)
