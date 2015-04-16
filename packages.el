@@ -67,6 +67,7 @@
             (setq ls-lisp-verbosity nil)))
 
 (use-package projectile
+  :ensure t
   :init (progn
           (projectile-global-mode)
           (set 'projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name)))))
