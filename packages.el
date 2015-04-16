@@ -127,3 +127,8 @@
 
 (use-package scratch
   :ensure)
+
+(use-package magit
+  :ensure t
+  :init (setq magit-last-seen-setup-instructions "1.4.0")
+  :bind (("C-x g" . magit-status)))

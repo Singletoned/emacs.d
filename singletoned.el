@@ -16,7 +16,6 @@
 (require 'saveplace)
 (require 'uniquify)
 (require 'flx-ido)
-(require 'magit)
 (require 'expand-region)
 
 
@@ -192,7 +191,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (global-set-key (kbd "s-[") 'unindent-dwim)
 (global-set-key (kbd "s-]") 'indent-dwim)
 
-(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x j") 'dired-jump)
 (global-set-key (kbd "C-x C-j") 'dired-jump-other-window)
