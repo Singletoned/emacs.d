@@ -109,7 +109,6 @@
 (use-package flycheck
   :ensure t
   :init (progn
-          (add-to-list 'flycheck-disabled-checkers 'python-pycompile)
           (setq flycheck-python-pyflakes-executable "~/.envs/emacs/bin/pyflakes")
           (setq flycheck-idle-change-delay 5)
           (global-flycheck-mode)))
