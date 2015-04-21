@@ -135,3 +135,6 @@
 
 (use-package sws-mode)
 (use-package jade-mode)
+
+(use-package sx
+  :ensure t)
