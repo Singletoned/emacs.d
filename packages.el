@@ -132,3 +132,6 @@
   :ensure t
   :init (setq magit-last-seen-setup-instructions "1.4.0")
   :bind (("C-x g" . magit-status)))
+
+(use-package sws-mode)
+(use-package jade-mode)

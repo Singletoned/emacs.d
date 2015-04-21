@@ -21,8 +21,6 @@
 
 ;; Modes
 
-(require 'sws-mode)
-(require 'jade-mode)
 
 ;; Colors
 

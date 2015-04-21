@@ -15,7 +15,6 @@
     deft
     expand-region
     flx-ido
-    jade-mode
     gist
     ido-ubiquitous
     magit
@@ -27,7 +26,6 @@
     scratch
     scss-mode
     smex
-    sws-mode
     zencoding-mode)
   "A list of packages to ensure are installed at launch.")
 
