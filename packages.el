@@ -126,7 +126,7 @@
          ("C-x r S-c" . phi-rectangle-kill-ring-save)))
 
 (use-package scratch
-  :ensure)
+  :ensure t)
 
 (use-package magit
   :ensure t
