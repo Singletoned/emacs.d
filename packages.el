@@ -12,8 +12,8 @@
 (use-package yasnippet
   :ensure t
   :config (progn
-            (set 'yas/snippet-dirs (concat user-emacs-directory "yasnippet-snippets"))
-            (yas-global-mode)
+            (set 'yas-snippet-dirs (concat user-emacs-directory "yasnippet-snippets"))
+            (yas-global-mode t)
             (dolist (pair '(("<tab>" . nil) ("TAB" . nil) ("M-§" . yas-expand)))
               (define-key yas-minor-mode-map (kbd (car pair)) (cdr pair)))))
 
