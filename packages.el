@@ -84,6 +84,7 @@
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-buffers-list)))
 (use-package helm-projectile
+  :ensure t
   :bind (("C-x p h". helm-projectile-find-file)))
 
 (use-package multiple-cursors
