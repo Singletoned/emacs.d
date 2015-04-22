@@ -100,6 +100,7 @@
          ("C-r" . phi-search-backward)))
 
 (use-package phi-search-mc
+  :ensure t
   :bind (("C-c C-m" . phi-search-mc/mark-all)))
 
 (use-package discover
