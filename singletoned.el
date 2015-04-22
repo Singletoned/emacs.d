@@ -143,9 +143,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (global-set-key (kbd "M-x") 'smex)
 
 
-;; Expand Region
-
-(global-set-key (kbd "C-=") 'er/expand-region)
 
 
 ;; Ido mode
