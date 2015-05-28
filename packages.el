@@ -41,6 +41,10 @@
             (setq whitespace-style '(face tabs trailing tab-mark))
             (global-whitespace-mode)))
 
+(use-package powerline
+ :ensure t
+ :config (powerline-center-theme))
+
 (use-package virtualenvwrapper
   :config (progn
             (venv-initialize-interactive-shells) ;; if you want interactive shell support

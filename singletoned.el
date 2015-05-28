@@ -164,9 +164,7 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
       ido-max-prospects 10
       ido-buffer-disable-smart-matches t)
 
-;; Powerline
 
-(powerline-center-theme)
 
 ;; Auto-Complete
 (require 'auto-complete)
