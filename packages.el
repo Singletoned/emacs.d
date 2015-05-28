@@ -76,7 +76,7 @@
   :init (progn
           (projectile-global-mode)
           (set 'projectile-mode-line '(:eval (format " P[%s]" (projectile-project-name)))))
-  :bind (("C-x p o" . projectile-find-file-other-window)))
+  :bind (("C-x p o" . helm-projectile)))
 
 (use-package helm
   :ensure t
