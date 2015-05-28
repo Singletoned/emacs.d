@@ -66,6 +66,7 @@
          ("§" . hippie-expand)))
 
 (use-package ls-lisp
+;;  :ensure t
   :config (progn
             (setq ls-lisp-use-insert-directory-program nil)
             (setq ls-lisp-verbosity nil)))
