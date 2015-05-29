@@ -13,9 +13,7 @@
 
 ;; Requirements
 
-(require 'saveplace)
 (require 'uniquify)
-(require 'flx-ido)
 (require 'expand-region)
 
 (defhydra hydra-whitespace (global-map "C-c t")
