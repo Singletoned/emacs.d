@@ -156,3 +156,5 @@
 
 (use-package docker-mode
   :init (add-to-list 'auto-mode-alist '("\\.docker\\'" . dockerfile-mode)))
+
+(use-package editorconfig)
