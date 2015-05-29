@@ -153,3 +153,6 @@
 (use-package expand-region
   :ensure t
   :bind (("C-=" . er/expand-region)))
+
+(use-package docker-mode
+  :init (add-to-list 'auto-mode-alist '("\\.docker\\'" . dockerfile-mode)))
