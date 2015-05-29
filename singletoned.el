@@ -86,6 +86,8 @@
 
 ;; Dired
 
+(setq dired-auto-revert-buffer t)
+
 (eval-after-load "dired"
   '(require 'dired-x))
 
