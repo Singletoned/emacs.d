@@ -15,6 +15,7 @@
 
 (require 'uniquify)
 (require 'expand-region)
+(require 'cl)
 
 (defhydra hydra-whitespace (global-map "C-c t")
   "whitespace"
@@ -164,13 +165,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
       ido-handle-duplicate-virtual-buffers 2
       ido-max-prospects 10
       ido-buffer-disable-smart-matches t)
-
-
-
-;; Auto-Complete
-(require 'auto-complete)
-(global-auto-complete-mode t)
-
 
 
 
