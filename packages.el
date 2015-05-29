@@ -88,6 +88,7 @@
             (define-key global-map [remap list-buffers] 'helm-buffers-list))
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-buffers-list)))
+
 (use-package helm-projectile
   :ensure t
   :bind (("C-x p h". helm-projectile-find-file)))
