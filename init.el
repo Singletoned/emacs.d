@@ -11,22 +11,15 @@
 
 (defvar my-packages
   '(
-    dash
-    deft
     expand-region
-    flx-ido
-    gist
     ido-ubiquitous
     magit
-    markdown-mode
     paredit
     powerline
-    rect-mark
-    sass-mode
     scratch
-    scss-mode
     smex
-    zencoding-mode)
+    use-package
+    )
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
