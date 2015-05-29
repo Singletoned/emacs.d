@@ -194,6 +194,10 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 (global-set-key (kbd "C-c C-m") 'execute-extended-command)
 
+(global-set-key (kbd "C-c q") 'query-replace)
+(global-set-key (kbd "C-c Q") 'query-replace-regexp)
+(global-set-key (kbd "C-c u") 'delete-indentation)
+
 
 ;; Functions
 
