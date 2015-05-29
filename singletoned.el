@@ -263,6 +263,7 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (objc-mode c-basic-offset)
     (perl-mode perl-indent-level)
     (pike-mode c-basic-offset)
+    (puppet-mode puppet-indent-level)
     (python-mode python-indent)
     (ruby-mode ruby-indent-level)
     (scala-mode scala-indent:step)
