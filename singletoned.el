@@ -18,6 +18,14 @@
 (require 'flx-ido)
 (require 'expand-region)
 
+(defhydra hydra-whitespace (global-map "C-c t")
+  "whitespace"
+  ("u" delete-indentation "join-lines")
+  ("j" next-line "down")
+  ("k" previous-line "up")
+  ("h" backward-char "back")
+  ("l" forward-char "forward")
+  ("." (lambda () (interactive) (re-search-forward "^[[:space:]]+[](),{}]+$")) "punctuation"))
 
 ;; Modes
 
