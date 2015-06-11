@@ -165,3 +165,10 @@
   :bind (
          ("M-p" . backward-paragraph)
          ("M-n" . forward-paragraph)))
+
+(use-package guide-key
+  :ensure t
+  :config (progn
+            (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
+            (setq guide-key/popup-window-position 'bottom))
+  :init (guide-key-mode 1))
