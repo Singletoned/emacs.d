@@ -111,10 +111,6 @@
   :ensure t
   :bind (("C-c C-m" . phi-search-mc/mark-all)))
 
-(use-package discover
-  :ensure t
-  :init (global-discover-mode t))
-
 (use-package flycheck
   :ensure t
   :init (progn
