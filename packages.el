@@ -159,3 +159,9 @@
   :init (add-to-list 'auto-mode-alist '("\\.docker\\'" . dockerfile-mode)))
 
 (use-package editorconfig)
+
+(use-package markdown-mode
+  :ensure t
+  :bind (
+         ("M-p" . backward-paragraph)
+         ("M-n" . forward-paragraph)))
