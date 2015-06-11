@@ -83,6 +83,7 @@
   :config (progn
             (require 'helm-config)
             (setq helm-buffer-max-length nil)
+            (setq helm-split-window-default-side 'other)
             (define-key global-map [remap find-file] 'helm-find-files)
             (define-key global-map [remap occur] 'helm-occur)
             (define-key global-map [remap list-buffers] 'helm-buffers-list))
