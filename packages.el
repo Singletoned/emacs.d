@@ -161,6 +161,7 @@
 
 (use-package markdown-mode
   :ensure t
+  :init (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
   :bind (
          ("M-p" . backward-paragraph)
          ("M-n" . forward-paragraph)))
