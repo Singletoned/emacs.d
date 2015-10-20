@@ -172,3 +172,10 @@
             (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
             (setq guide-key/popup-window-position 'bottom))
   :init (guide-key-mode 1))
+
+(use-package flx-ido
+  :ensure t
+  :init (progn
+          (ido-mode t)
+          (ido-everywhere t)
+          (flx-ido-mode t)))
