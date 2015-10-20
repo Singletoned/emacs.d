@@ -45,6 +45,7 @@
 
 ;(modify-syntax-entry ?_ "w" python-mode-syntax-table)
 
+(set-default 'vc-follow-symlinks t)
 (global-hl-line-mode t)
 (set-default 'hl-line-sticky-flag nil)
 (global-linum-mode t)
