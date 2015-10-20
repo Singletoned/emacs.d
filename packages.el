@@ -5,6 +5,7 @@
           (add-to-list 'auto-mode-alist `(,(concat "\\." extension "$") . yaml-mode))))
 
 (use-package web-mode
+  :ensure t
   :init (dolist (extension '("html" "phtml" "tpl" "php" "jsp" "as[cp]x" "erb" "mustache" "djhtml"))
           (add-to-list 'auto-mode-alist `(,(concat "\\." extension "\\'") . web-mode)))
   :config (setq web-mode-engines-alist '(("django" . "\\.html\\'"))))
@@ -46,6 +47,7 @@
  :config (powerline-center-theme))
 
 (use-package virtualenvwrapper
+  :ensure t
   :config (progn
             (venv-initialize-interactive-shells) ;; if you want interactive shell support
             (venv-initialize-eshell) ;; if you want eshell support
@@ -154,7 +156,8 @@
 (use-package docker-mode
   :init (add-to-list 'auto-mode-alist '("\\.docker\\'" . dockerfile-mode)))
 
-(use-package editorconfig)
+(use-package editorconfig
+  :ensure t)
 
 (use-package markdown-mode
   :ensure t
