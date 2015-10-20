@@ -82,7 +82,7 @@
 
 (use-package helm
   :ensure t
-  :config (progn
+  :init (progn
             (require 'helm-config)
             (setq helm-buffer-max-length nil)
             (setq helm-split-window-default-side 'other)
