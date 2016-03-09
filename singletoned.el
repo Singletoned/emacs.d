@@ -504,3 +504,23 @@ URL `http://ergoemacs.org/emacs/elisp_generate_uuid.html'
                     (format "%x" (+ 8 (random 4)))
                     (substring myStr 17 20)
                     (substring myStr 20 32)))))
+
+
+(defun python-prprint-region ()
+  "PPrints the region using python shell"
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "python -c 'import sys; from pprint import pprint as pp; pp(eval(sys.stdin.read()))'"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
