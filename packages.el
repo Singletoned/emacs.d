@@ -209,5 +209,4 @@
   :ensure t
   :init (progn
           (require 'spaceline-config)
-          (spaceline-spacemacs-theme))
-)
+          (spaceline-spacemacs-theme)))
