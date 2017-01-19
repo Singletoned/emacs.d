@@ -142,6 +142,9 @@
 
 (use-package sws-mode)
 (use-package jade-mode)
+(use-package lua-mode)
+(use-package json-mode)
+(use-package racket-mode)
 
 (use-package sx
   :ensure t)
