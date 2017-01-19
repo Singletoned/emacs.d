@@ -532,6 +532,11 @@ URL `http://ergoemacs.org/emacs/elisp_generate_uuid.html'
        ;; show error buffer?
        t)))
 
+(defun backward-kill-line (arg)
+  "Kill ARG lines backward."
+  (interactive "p")
+  (kill-line (- 1 arg)))
+
 (defun insert-date ()
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
