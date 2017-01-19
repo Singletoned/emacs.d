@@ -85,12 +85,12 @@
   :init (progn
             (require 'helm-config)
             (setq helm-buffer-max-length nil)
-            (setq helm-split-window-default-side 'other)
-            (define-key global-map [remap find-file] 'helm-find-files)
-            (define-key global-map [remap occur] 'helm-occur)
-            (define-key global-map [remap list-buffers] 'helm-buffers-list))
+            (setq helm-split-window-default-side 'other))
   :bind (("M-x" . helm-M-x)
-         ("C-x b" . helm-buffers-list)))
+         ("C-x C-m" . helm-M-x)
+         ("C-x b" . helm-buffers-list)
+         ("C-x C-f" . helm-find-file)
+))
 
 (use-package helm-projectile
   :ensure t
