@@ -531,3 +531,12 @@ URL `http://ergoemacs.org/emacs/elisp_generate_uuid.html'
        "*Tidy Error Buffer*"
        ;; show error buffer?
        t)))
+
+(defun insert-date ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
+
+(defun insert-datetime ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M:%S")))
+
