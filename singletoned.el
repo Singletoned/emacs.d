@@ -19,6 +19,7 @@
 (require 'uniquify)
 (require 'expand-region)
 (require 'cl)
+(require 'org-table)
 
 (defhydra hydra-whitespace (global-map "C-c t")
   "whitespace"
