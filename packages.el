@@ -182,3 +182,32 @@
           (ido-mode t)
           (ido-everywhere t)
           (flx-ido-mode t)))
+
+(use-package org-journal
+  :ensure t
+  :init (progn
+          (setq org-journal-dir "~/.journal/")))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :init (progn
+          (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+          (add-hook 'racket-repl-mode-hook #'rainbow-delimiters-mode)))
+
+(use-package racket-mode
+  :ensure t)
+
+(use-package which-key
+  :ensure t
+  :init (which-key-mode))
+
+(use-package company
+  :ensure t
+  :init (company-mode))
+
+(use-package spaceline
+  :ensure t
+  :init (progn
+          (require 'spaceline-config)
+          (spaceline-spacemacs-theme))
+)
