@@ -43,7 +43,11 @@
 
 ;; Config
 
+(setq-default fill-column 78)
+
 ;(modify-syntax-entry ?_ "w" python-mode-syntax-table)
+
+(set-default 'enable-recursive-minibuffers t)
 
 (set-default 'vc-follow-symlinks t)
 (global-hl-line-mode t)
@@ -73,8 +77,11 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(setq visible-bell t
-      inhibit-startup-message t
+(setq visible-bell nil) ;; The default
+(setq ring-bell-function 'ignore)
+(echo-bell-mode)
+
+(setq inhibit-startup-message t
       color-theme-is-global t
       sentence-end-double-space nil
       shift-select-mode nil
