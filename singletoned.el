@@ -284,6 +284,7 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (sh-mode sh-basic-offset sh-indentation)
     (web-mode web-mode-indent-style)
     (emacs-lisp-mode lisp-indent-offset)
+    (jade-mode jade-tab-width)
     (yaml-mode yaml-indent-offset)))
 
 (defun my-get-indent-var ()
