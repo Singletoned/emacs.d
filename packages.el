@@ -137,7 +137,8 @@
 
 (use-package magit
   :ensure t
-  :init (setq magit-last-seen-setup-instructions "1.4.0")
+  :init (progn
+          (setq magit-commit-show-diff nil))
   :bind (("C-x g" . magit-status)))
 
 (use-package sws-mode)
