@@ -11,6 +11,9 @@
 
 (set 'python-shell-buffer-name "Python Shell")
 
+(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
+
 ;; Requirements
 
 (require 'uniquify)
@@ -186,6 +189,13 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
 (global-set-key (kbd "s-/") 'my-comment-dwim)
 (global-set-key (kbd "s-[") 'unindent-dwim)
 (global-set-key (kbd "s-]") 'indent-dwim)
+
+
+(global-set-key (kbd "s-a") 'mark-whole-buffer)
+(global-set-key (kbd "s-c") 'kill-ring-save)
+(global-set-key (kbd "s-v") 'yank)
+(global-set-key (kbd "s-z") 'undo)
+(global-set-key (kbd "s-l") 'goto-line)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x j") 'dired-jump)
