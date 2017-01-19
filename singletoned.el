@@ -557,3 +557,55 @@ URL `http://ergoemacs.org/emacs/elisp_generate_uuid.html'
   (interactive)
   (insert (format-time-string "%Y-%m-%dT%H:%M:%S")))
 
+(require 'google-this)
+
+(defun google-this-lucky-and-insert-markdown-url (term &optional insert)
+  "Fetch the url that would be visited by `google-this-lucky'.
+If you just want to do an \"I'm feeling lucky search\", use
+`google-this-lucky-search' instead.
+Interactively:
+* Insert the URL at point,
+* Kill the searched term, removing it from the buffer (it is killed, not
+  deleted, so it can be easily yanked back if desired).
+* Search term defaults to region or line, and always queries for
+  confirmation.
+Non-Interactively:
+* Runs synchronously,
+* Search TERM is an argument without confirmation,
+* Only insert if INSERT is non-nil, otherwise return."
+  (interactive '(needsQuerying t))
+  (let ((nint (null (called-interactively-p 'any)))
+        (l (if (region-active-p) (region-beginning) (line-beginning-position)))
+        (r (if (region-active-p) (region-end) (line-end-position)))
+        ;; We get current-buffer and point here, because it's
+        ;; conceivable that they could change while waiting for input
+        ;; from read-string
+        (p (point))
+        (b (current-buffer)))
+    (when nint (setq google-this--last-url nil))
+    (when (eq term 'needsQuerying)
+      (setq term (read-string "Lucky Term: " (buffer-substring-no-properties l r))))
+    (unless (stringp term) (error "TERM must be a string!"))
+
+    (defalias '-insert-link (apply-partially 'insert-markdown-link term) "Inert link")
+    (google-this--do-lucky-search
+     term
+     `(lambda (url)
+        (unless url (error "Received nil url"))
+        (with-current-buffer ,b
+          (save-excursion
+            (if ,nint (goto-char ,p)
+              (kill-region ,l ,r)
+              (goto-char ,l))
+            (insert "[")
+            (insert ,term)
+            (insert "](")
+            (insert url)
+            (insert ")")))))
+    (unless nint (deactivate-mark))
+    (when nint
+      (while (null google-this--last-url) (sleep-for 0 10))
+      google-this--last-url)))
+
+
+;; This line deliberately not left blank
