@@ -116,7 +116,7 @@
 (use-package flycheck
   :ensure t
   :init (progn
-          (setq flycheck-python-pyflakes-executable "~/.envs/emacs/bin/pyflakes")
+          (setq flycheck-python-pylint-executable "~/.envs/emacs/bin/pylint")
           (setq flycheck-idle-change-delay 5)
           (global-flycheck-mode)))
 
