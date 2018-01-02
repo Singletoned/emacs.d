@@ -83,7 +83,6 @@
 
 (setq visible-bell nil) ;; The default
 (setq ring-bell-function 'ignore)
-(echo-bell-mode)
 
 (setq inhibit-startup-message t
       color-theme-is-global t
