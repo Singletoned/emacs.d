@@ -7,8 +7,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(add-to-list 'load-path (concat user-emacs-directory "src"))
-
 (defvar my-packages
   '(
     expand-region
