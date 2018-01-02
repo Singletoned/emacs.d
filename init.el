@@ -7,23 +7,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages
-  '(
-    expand-region
-    ido-ubiquitous
-    magit
-    paredit
-    powerline
-    scratch
-    smex
-    use-package
-    )
-  "A list of packages to ensure are installed at launch.")
-
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
-
 (load (concat user-emacs-directory "packages.el"))
 
 (setq system-config (concat user-emacs-directory system-name ".el")
