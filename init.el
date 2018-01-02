@@ -7,7 +7,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(load (concat user-emacs-directory "packages.el"))
+ (load (concat user-emacs-directory "packages.el"))
 
 (setq system-config (concat user-emacs-directory system-name ".el")
       user-config (concat user-emacs-directory user-login-name ".el"))
