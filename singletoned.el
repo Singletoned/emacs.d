@@ -156,29 +156,6 @@ nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\|NOCOMMIT\\)"
        1 font-lock-warning-face t)))
 
 
-
-
-;; Ido mode
-
-(ido-mode t)
-(ido-everywhere t)
-(flx-ido-mode t)
-;; disable ido faces to see flx highlights.
-(setq ido-use-faces nil)
-
-(ido-ubiquitous t)
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'prompt
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10
-      ido-buffer-disable-smart-matches t)
-
-
-
 ;; Keyboard shortcuts
 
 (global-set-key (kbd "M-p") 'backward-paragraph)
