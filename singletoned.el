@@ -584,4 +584,105 @@ Non-Interactively:
       google-this--last-url)))
 
 
+
+
+(defun html-to-jade ()
+  "Reformat html to jade."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "html2jade --bodyless"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+
+(defun format-json ()
+  "Pretty format buffer using Python json lib."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "python3 -c 'import json, sys; print(json.dumps(json.loads(sys.stdin.read()), indent=2, sort_keys=True))'"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+(defun python-to-json ()
+  "Pretty format buffer using Python json lib."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "python3 -c 'import json, sys, ast; print(json.dumps(ast.literal_eval(sys.stdin.read()), indent=2, sort_keys=True))'"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+
+(defun json-to-yaml ()
+  "Pretty format buffer using Python yaml lib."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "json2yaml"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+
+(defun lint-shell ()
+  "Reformat html to jade."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "shfmt"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+
 ;; This line deliberately not left blank
