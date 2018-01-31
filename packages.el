@@ -148,9 +148,7 @@
              'replace))
   :bind (("C-x g" . magit-status)))
 
-(use-package sws-mode)
 (use-package jade-mode)
-(use-package lua-mode)
 (use-package json-mode)
 (use-package racket-mode)
 
