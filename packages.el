@@ -89,7 +89,7 @@
   :bind (("M-x" . helm-M-x)
          ("C-x C-m" . helm-M-x)
          ("C-x b" . helm-buffers-list)
-         ("C-x C-f" . helm-find-file)
+         ("C-x C-f" . helm-find-files)
 ))
 
 (use-package helm-projectile
