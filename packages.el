@@ -162,8 +162,12 @@
   :ensure t
   :bind (("C-=" . er/expand-region)))
 
-(use-package docker-mode
-  :init (add-to-list 'auto-mode-alist '("\\.docker\\'" . dockerfile-mode)))
+
+(use-package dockerfile-mode
+  :ensure t
+  :init (progn
+          (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+          (add-to-list 'auto-mode-alist '("\\.docker\\'" . dockerfile-mode))))
 
 (use-package editorconfig
   :ensure t)
