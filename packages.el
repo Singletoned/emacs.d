@@ -220,3 +220,6 @@
   :init (progn
           (require 'spaceline-config)
           (spaceline-spacemacs-theme)))
+
+(use-package google-this
+  :ensure t)
