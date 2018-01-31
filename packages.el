@@ -148,8 +148,8 @@
              'replace))
   :bind (("C-x g" . magit-status)))
 
-(use-package jade-mode)
-(use-package json-mode)
+(use-package jade-mode :ensure t)
+(use-package json-mode :ensure t)
 (use-package racket-mode)
 
 (use-package sx
