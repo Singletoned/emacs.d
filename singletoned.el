@@ -618,6 +618,64 @@ Non-Interactively:
        ;; show error buffer?
        t)))
 
+
+(defun format-css ()
+  "Pretty format buffer using cssbeautify-cli."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "cssbeautify-cli -s"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+(defun format-js ()
+  "Pretty format buffer using esformatter."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "esformatter"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+(defun format-sql ()
+  "Pretty format buffer using sqlparse"
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "python3 -c 'import sys, sqlparse; print(sqlparse.format(sys.stdin.read(), reindent=True))'"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
 (defun python-to-json ()
   "Pretty format buffer using Python json lib."
   (interactive)
@@ -659,7 +717,7 @@ Non-Interactively:
 
 
 (defun lint-shell ()
-  "Reformat html to jade."
+  "Reformat shell"
   (interactive)
   (if (use-region-p)
       (shell-command-on-region
@@ -668,6 +726,25 @@ Non-Interactively:
        (region-end)
        ;; command and parameters
        "shfmt"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+(defun lint-graphql ()
+  "Reformat graphql"
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "python3 -c 'import graphql, sys; print(graphql.print_ast(graphql.parse(graphql.Source(sys.stdin.read()))))'"
        ;; output buffer
        (current-buffer)
        ;; replace?
