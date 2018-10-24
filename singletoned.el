@@ -51,6 +51,9 @@
 
 ;(modify-syntax-entry ?_ "w" python-mode-syntax-table)
 
+(set-default 'split-height-threshold 999)
+(set-default 'split-width-threshold 999)
+
 (set-default 'enable-recursive-minibuffers t)
 
 (set-default 'vc-follow-symlinks t)
