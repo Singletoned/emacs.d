@@ -16,7 +16,7 @@
   yasnippet
   :ensure t
   :config (progn
-            (set 'yas-snippet-dirs (concat user-emacs-directory "yasnippet-snippets"))
+            (set 'yas-snippet-dirs `(,(concat user-emacs-directory "yasnippet-snippets")))
             (yas-global-mode t)
             (dolist (pair '(("<tab>" . nil)
                             ("TAB" . nil)
