@@ -2,6 +2,7 @@
 
 (use-package
   yaml-mode
+  :ensure t
   :init (dolist (extension '("yml" "yaml" "sls"))
           (add-to-list 'auto-mode-alist `(,(concat "\\." extension "$") . yaml-mode))))
 
