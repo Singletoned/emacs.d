@@ -761,6 +761,27 @@ Non-Interactively:
        t)))
 
 
+
+(defun python-to-python ()
+  "Eval python"
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "python3 -c 'import sys; print(eval(sys.stdin.read()))'"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+
 (defun json-to-yaml ()
   "Pretty format buffer using Python yaml lib."
   (interactive)
