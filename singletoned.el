@@ -693,7 +693,7 @@ Non-Interactively:
        (region-beginning)
        (region-end)
        ;; command and parameters
-       "cssbeautify-cli -s"
+       "npx cssbeautify-cli -s --indent=2"
        ;; output buffer
        (current-buffer)
        ;; replace?
