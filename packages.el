@@ -221,8 +221,10 @@
 (use-package
   org-journal
   :ensure t
-  :init (progn
-          (setq org-journal-dir "~/.journal/")))
+  :custom
+  (org-journal-dir "~/.journal/")
+  (org-journal-date-format "%A, %d %B %Y")
+)
 
 (use-package
   rainbow-delimiters
