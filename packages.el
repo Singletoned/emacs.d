@@ -97,7 +97,7 @@
   :ensure t
   :init (progn
           (require 'helm-config)
-          (setq helm-buffer-max-length nil)
+          (setq helm-buffer-max-length 32)
           (setq helm-split-window-default-side 'other))
   :bind (("M-x" . helm-M-x)
          ("C-x C-m" . helm-M-x)
