@@ -273,12 +273,9 @@
   :config (progn (setenv "WORKON_HOME" "~/.envs/")
                  (pyvenv-activate "~/.envs/emacs")
                  (set-default 'elpy-rpc-timeout 10))
+  :bind (("C-c f" . elpy-format-code))
   :init (elpy-enable))
 
-(use-package
-  format-all
-  :ensure t
-  :bind (("C-c f" . format-all-buffer)))
 
 (use-package
   s
