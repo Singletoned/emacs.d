@@ -97,6 +97,8 @@
       backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/backups")))
       diff-switches "-u")
 
+(set-default 'reb-re-syntax 'string)
+
 ;; Dired
 
 (setq dired-auto-revert-buffer t)
