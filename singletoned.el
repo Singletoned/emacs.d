@@ -267,7 +267,7 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (scala-mode scala-indent:step)
     (sgml-mode sgml-basic-offset)
     (sh-mode sh-basic-offset sh-indentation)
-    (web-mode web-mode-indent-style)
+    (web-mode web-mode-markup-indent-offset)
     (emacs-lisp-mode lisp-indent-offset)
     (jade-mode jade-tab-width)
     (yaml-mode yaml-indent-offset)))
