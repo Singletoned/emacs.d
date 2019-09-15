@@ -192,9 +192,10 @@
   :init (progn (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
                (add-to-list 'auto-mode-alist '("\\.docker\\'" . dockerfile-mode))))
 
-(use-package
-  editorconfig
-  :ensure t)
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
 (use-package
   markdown-mode
