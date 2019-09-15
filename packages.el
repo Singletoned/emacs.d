@@ -270,15 +270,5 @@
          ("M-g z" . dumb-jump-go-prefer-external-other-window)))
 
 (use-package
-  elpy
-  :ensure t
-  :config (progn (setenv "WORKON_HOME" "~/.envs/")
-                 (pyvenv-activate "~/.envs/emacs")
-                 (set-default 'elpy-rpc-timeout 10))
-  :bind (("C-c f" . elpy-format-code))
-  :init (elpy-enable))
-
-
-(use-package
   s
   :ensure t)
