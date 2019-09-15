@@ -782,6 +782,30 @@ Non-Interactively:
        t)))
 
 
+
+(defun format-python ()
+  "Format Python using Yapf"
+  (interactive)
+  (let ((deactivate-mark nil)
+        (beg (if mark-active (region-beginning) (point-min)))
+        (end (if mark-active (region-end) (point-max))))
+    (message "%d %d" beg end)
+    (shell-command-on-region
+     ;; beginning and end of buffer
+     beg
+     end
+     ;; command and parameters
+     "~/.envs/emacs/bin/yapf"
+     ;; output buffer
+     (current-buffer)
+     ;; replace?
+     t
+     ;; name of the error buffer
+     "*Tidy Error Buffer*"
+     ;; show error buffer?
+     t)))
+
+
 (defun json-to-yaml ()
   "Pretty format buffer using Python yaml lib."
   (interactive)
