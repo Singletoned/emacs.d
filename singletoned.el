@@ -594,7 +594,7 @@ Non-Interactively:
        (region-beginning)
        (region-end)
        ;; command and parameters
-       "npx html2jade --bodyless"
+       "html2jade --bodyless"
        ;; output buffer
        (current-buffer)
        ;; replace?
