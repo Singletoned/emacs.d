@@ -10,6 +10,7 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
 (set 'python-shell-buffer-name "Python Shell")
+(setq python-shell-interpreter "python3")
 
 (setq mac-option-modifier 'meta)
 (setq mac-command-modifier 'super)
