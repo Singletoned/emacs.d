@@ -2,7 +2,8 @@
 
 (set 'confirm-kill-emacs `yes-or-no-p)
 
-(set-default-font "Inconsolata 14")
+(add-to-list 'default-frame-alist '(font . "Inconsolata 14"))
+(set-face-attribute 'default t :font "Inconsolata 14")
 
 ;; Set shell path
 
@@ -14,6 +15,8 @@
 
 (setq mac-option-modifier 'meta)
 (setq mac-command-modifier 'super)
+
+(setenv "RIPGREP_CONFIG_PATH" (concat (getenv "HOME") "/.config/ripgrep"))
 
 ;; Requirements
 
@@ -785,7 +788,7 @@ Non-Interactively:
 
 
 (defun format-python ()
-  "Format Python using Yapf"
+  "Format Python using Black"
   (interactive)
   (let ((deactivate-mark nil)
         (beg (if mark-active (region-beginning) (point-min)))
@@ -796,7 +799,7 @@ Non-Interactively:
      beg
      end
      ;; command and parameters
-     "~/.envs/emacs/bin/yapf"
+     "~/.envs/emacs/bin/black -"
      ;; output buffer
      (current-buffer)
      ;; replace?
