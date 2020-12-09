@@ -131,7 +131,7 @@
   flycheck
   :ensure t
   :init (progn
-          (setq flycheck-python-pylint-executable "~/.envs/emacs/bin/pylint")
+          (setq flycheck-python-flake8-executable "~/.envs/emacs/bin/flake8")
           (setq flycheck-sh-shellcheck-executable "shellcheck")
           (setq flycheck-idle-change-delay 5)
           (global-flycheck-mode)))
