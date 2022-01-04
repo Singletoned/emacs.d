@@ -8,7 +8,7 @@
 ;; Set shell path
 
 (setenv "PATH" (concat "/usr/local/bin:" "~/.emacs.d/node_modules/.bin:" (getenv "PATH")))
-(setq exec-path (append exec-path '("/usr/local/bin")))
+(setq exec-path (append exec-path '("/opt/homebrew/bin" "/opt/homebrew/sbin" "/usr/local/bin")))
 
 (set 'python-shell-buffer-name "Python Shell")
 (setq python-shell-interpreter "python3")
