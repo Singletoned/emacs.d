@@ -270,5 +270,9 @@
          ("M-g z" . dumb-jump-go-prefer-external-other-window)))
 
 (use-package
+  deadgrep
+  :ensure t)
+
+(use-package
   s
   :ensure t)
