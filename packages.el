@@ -287,3 +287,8 @@
   :config
   (load-theme 'modus-vivendi))
 
+(use-package dracula-theme
+  :ensure t
+  :config
+
+  (load-theme 'dracula t))
