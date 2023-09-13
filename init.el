@@ -1,3 +1,5 @@
+(server-start)
+
 (load-file (expand-file-name "keyboard.el" user-emacs-directory))
 (load-file (expand-file-name "settings.el" user-emacs-directory))
 (load-file (expand-file-name "packages.el" user-emacs-directory))
