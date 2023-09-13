@@ -23,3 +23,6 @@
 (global-set-key (kbd "C-c q") 'query-replace)
 (global-set-key (kbd "C-c Q") 'query-replace-regexp)
 (global-set-key (kbd "C-c u") 'delete-indentation)
+
+(global-set-key (kbd "s-[") 'unindent-dwim)
+(global-set-key (kbd "s-]") 'indent-dwim)
