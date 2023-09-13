@@ -37,8 +37,23 @@
 (setq x-underline-at-descent-line nil)           ; Prettier underlines
 (setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
 
-(setq-default show-trailing-whitespace t)      ; By default, don't underline trailing spaces
-(setq-default indicate-buffer-boundaries 'left)  ; Show buffer top and bottom in the margin
+(setq-default show-trailing-whitespace t)
 
 (blink-cursor-mode -1)                                ; Steady cursor
 (pixel-scroll-precision-mode)                         ; Smooth scrolling
+
+(global-hl-line-mode t)
+(set-default 'hl-line-sticky-flag nil)
+
+(defun my-hl-line-range-function ()
+  (cons
+    (line-end-position)
+    (line-beginning-position 2)))
+
+(setq hl-line-range-function #'my-hl-line-range-function)
+
+(set-default 'indicate-empty-lines t)
+
+(add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1))) ; Disable autoindent
+
+(setq uniquify-buffer-name-style 'post-forward)
