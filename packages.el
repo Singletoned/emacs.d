@@ -1,19 +1,36 @@
-;; which-key: shows a popup of available keybindings when typing a long key
-;; sequence (e.g. C-x ...)
 (use-package which-key
   :ensure t
-  :config
-  (which-key-mode))
+  :config (which-key-mode))
 
 
 (use-package emacs
-  :config
-  (load-theme 'modus-vivendi))
+  :config (load-theme 'modus-vivendi))
 
 
-(use-package dracula-theme
+(use-package haki-theme
   :ensure t
-  :config
+  :config (load-theme 'haki t))
 
-  (load-theme 'dracula t))
 
+(use-package
+  hippie-expand
+  :init (progn
+          (setq my-hippie-expand-line (make-hippie-expand-function '(try-expand-line
+                                                                     try-expand-line-all-buffers)
+                                                                   t))
+          (bind-key "±" my-hippie-expand-line)
+          (setq hippie-expand-try-functions-list '(try-expand-dabbrev try-expand-dabbrev-all-buffers
+                                                                      try-expand-dabbrev-from-kill
+                                                                      try-expand-all-abbrevs)))
+  :bind (("M-/" . hippie-expand)
+         ("§" . hippie-expand)))
+
+(use-package
+  magit
+  :ensure t
+  :init (progn
+          (setq magit-commit-show-diff nil))
+  :config (progn (magit-add-section-hook 'magit-status-sections-hook
+                                         'magit-insert-unpushed-to-upstream
+                                         'magit-insert-unpushed-to-upstream-or-recent 'replace))
+  :bind (("C-x g" . magit-status)))
