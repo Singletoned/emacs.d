@@ -34,3 +34,8 @@
                                          'magit-insert-unpushed-to-upstream
                                          'magit-insert-unpushed-to-upstream-or-recent 'replace))
   :bind (("C-x g" . magit-status)))
+
+(use-package centered-cursor-mode
+  :ensure t
+  :config (progn (global-centered-cursor-mode) (setq ccm-recenter-at-end-of-file t))
+)
