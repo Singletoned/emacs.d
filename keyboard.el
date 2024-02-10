@@ -26,3 +26,7 @@
 
 (global-set-key (kbd "s-[") 'unindent-dwim)
 (global-set-key (kbd "s-]") 'indent-dwim)
+
+(eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map (kbd "_") 'dired-create-empty-file)))
