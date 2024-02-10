@@ -12,7 +12,7 @@
 (global-set-key (kbd "s-l") 'goto-line)
 
 (global-set-key (kbd "C-x j") 'dired-jump)
-(global-set-key (kbd "C-x C-j") 'dired-jump-other-window)
+(global-set-key (kbd "C-x C-j") 'dired-jump)
 
 (global-set-key (kbd "C-x ~") (lambda () (interactive) (dired-other-window user-emacs-directory)))
 
