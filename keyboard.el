@@ -14,6 +14,8 @@
 (global-set-key (kbd "C-x j") 'dired-jump)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 
+(global-set-key (kbd "C-x C-k") 'kill-region)
+
 (global-set-key (kbd "C-x ~") (lambda () (interactive) (dired-other-window user-emacs-directory)))
 
 (global-set-key (kbd "s-h") 'help-command)
