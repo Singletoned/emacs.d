@@ -1,3 +1,25 @@
+(defun my-comment-dwim (arg)
+  "If region is active, call `comment-or-uncomment-region'.
+Else, if the line is empty, call `comment-insert-comment-function'
+if it is defined, otherwise insert a comment and indent it.
+Else, call `comment-or-uncomment-region' on the whole line"
+  (interactive "P")
+  (comment-normalize-vars)
+  (if (and mark-active transient-mark-mode)
+      (comment-or-uncomment-region (region-beginning) (region-end) arg)
+    (if (save-excursion (beginning-of-line) (not (looking-at "\\s-*$")))
+        (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+      (if comment-insert-comment-function
+          (funcall comment-insert-comment-function)
+        (let ((add (comment-add arg)))
+          ;; Some modes insist on keeping column 0 comment in column 0
+          ;; so we need to move away from it before inserting the comment.
+          (indent-according-to-mode)
+          (insert (comment-padright comment-start add))
+          (save-excursion
+            (unless (string= "" comment-end)
+              (insert (comment-padleft comment-end add)))
+            (indent-according-to-mode)))))))
 
 (defconst my-indent-var-list
   '((awk-mode c-basic-offset)
