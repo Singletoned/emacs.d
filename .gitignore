@@ -1,4 +1,5 @@
 /.cache/
+/backups/
 /eln-cache/
 /elpa/
 /history
