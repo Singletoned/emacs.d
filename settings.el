@@ -3,6 +3,8 @@
 
 (setq inhibit-splash-screen t)
 
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+
 (setq initial-major-mode 'fundamental-mode)  ; default mode for the *scratch* buffer
 (setq display-time-default-load-average nil) ; this information is useless for most
 
