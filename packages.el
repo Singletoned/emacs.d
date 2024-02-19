@@ -311,3 +311,6 @@
   :ensure t
   :config (progn (global-centered-cursor-mode) (setq ccm-recenter-at-end-of-file t)))
 
+(use-package expand-region
+  :ensure t
+  :bind (("C-=" . er/expand-region)))
