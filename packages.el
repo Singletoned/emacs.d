@@ -3,14 +3,9 @@
   :config (which-key-mode))
 
 
-(use-package emacs
-  :config (load-theme 'modus-vivendi))
-
-
-(use-package haki-theme
+(use-package ef-themes
   :ensure t
-  :config (load-theme 'haki t))
-
+  :init (load-theme 'ef-bio :no-confirm))
 
 (use-package
   hippie-expand
