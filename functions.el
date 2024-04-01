@@ -30,6 +30,7 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (cperl-mode cperl-indent-level)
     (css-mode css-indent-offset)
     (erlang-mode erlang-indent-level)
+    (feature-mode feature-indent-offset)
     (groovy-mode c-basic-offset)
     (haskell-mode haskell-indent-offset)
     (idl-mode c-basic-offset)
