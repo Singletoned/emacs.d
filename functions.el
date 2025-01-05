@@ -130,3 +130,45 @@ Else, call `comment-or-uncomment-region' on the whole line"
           (indent-rigidly beg end (or
                                    (and (< indent-amount 0) indent-amount)
                                    (* (or count 1) (- 0 indent-width)))))))))
+
+
+(defun format-json ()
+  "Pretty format buffer using Python json lib."
+  (interactive)
+  (if (use-region-p)
+      (shell-command-on-region
+       ;; beginning and end of buffer
+       (region-beginning)
+       (region-end)
+       ;; command and parameters
+       "python3 -c 'import json, sys; print(json.dumps(json.loads(sys.stdin.read()), indent=2, sort_keys=True))'"
+       ;; output buffer
+       (current-buffer)
+       ;; replace?
+       t
+       ;; name of the error buffer
+       "*Tidy Error Buffer*"
+       ;; show error buffer?
+       t)))
+
+(defun format-python ()
+  "Format Python using Black"
+  (interactive)
+  (let ((deactivate-mark nil)
+        (beg (if mark-active (region-beginning) (point-min)))
+        (end (if mark-active (region-end) (point-max))))
+    (message "%d %d" beg end)
+    (shell-command-on-region
+     ;; beginning and end of buffer
+     beg
+     end
+     ;; command and parameters
+     "~/.envs/emacs/bin/black -"
+     ;; output buffer
+     (current-buffer)
+     ;; replace?
+     t
+     ;; name of the error buffer
+     "*Tidy Error Buffer*"
+     ;; show error buffer?
+     t)))
