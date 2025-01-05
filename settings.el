@@ -59,3 +59,6 @@
 (add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1))) ; Disable autoindent
 
 (setq uniquify-buffer-name-style 'post-forward)
+
+(setq ispell-program-name "/opt/homebrew/bin/aspell")
+
