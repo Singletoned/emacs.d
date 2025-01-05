@@ -25,7 +25,8 @@
   :ensure t
   :init (progn
           (setq magit-commit-show-diff nil))
-  :config (progn (magit-add-section-hook 'magit-status-sections-hook
+  :config (progn (setq magit-git-executable "/opt/homebrew/bin/git")
+		 (magit-add-section-hook 'magit-status-sections-hook
                                          'magit-insert-unpushed-to-upstream
                                          'magit-insert-unpushed-to-upstream-or-recent 'replace))
   :bind (("C-x g" . magit-status)))
