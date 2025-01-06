@@ -329,3 +329,11 @@
          ("C-x r C-k" . phi-rectangle-kill-region)
          ("C-x r S-c" . phi-rectangle-kill-ring-save)))
 
+(use-package consult
+  :ensure t
+  ;; Other good things to bind: consult-ripgrep, consult-line-multi,
+  ;; consult-history, consult-outline
+  :bind (("C-x b" . consult-buffer) ; orig. switch-to-buffer
+         ("M-y" . consult-yank-pop) ; orig. yank-pop
+         ("C-s" . consult-line))    ; orig. isearch
+  :config (setq consult-narrow-key "<"))
