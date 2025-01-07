@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "html2jade": "^0.8.6",
-    "pug": "^2.0.4"
-  }
-}
