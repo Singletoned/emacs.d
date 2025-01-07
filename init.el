@@ -1,33 +1,56 @@
-(require 'package)
+(load-file (expand-file-name "keyboard.el" user-emacs-directory))
+(load-file (expand-file-name "settings.el" user-emacs-directory))
+(load-file (expand-file-name "packages.el" user-emacs-directory))
 
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Optional extras
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; Uncomment the (load-file …) lines or copy code from the extras/ elisp files
+;; as desired
 
-(load (concat user-emacs-directory "packages.el"))
+;; UI/UX enhancements mostly focused on minibuffer and autocompletion interfaces
+;; These ones are *strongly* recommended!
+(load-file (expand-file-name "extras/base.el" user-emacs-directory))
 
-(setq system-config (concat user-emacs-directory system-name ".el")
-      user-config (concat user-emacs-directory user-login-name ".el"))
+;; Packages for software development
+(load-file (expand-file-name "extras/dev.el" user-emacs-directory))
+
+;; Vim-bindings in Emacs (evil-mode configuration)
+;(load-file (expand-file-name "extras/vim-like.el" user-emacs-directory))
+
+;; Org-mode configuration
+;; WARNING: need to customize things inside the elisp file before use! See
+;; the file extras/org-intro.txt for help.
+;(load-file (expand-file-name "extras/org.el" user-emacs-directory))
+
+;; Email configuration in Emacs
+;; WARNING: needs the `mu' program installed; see the elisp file for more
+;; details.
+;(load-file (expand-file-name "extras/email.el" user-emacs-directory))
+
+;; Tools for academic researchers
+;(load-file (expand-file-name "extras/researcher.el" user-emacs-directory))
+
+
+(load-file (expand-file-name "keyboard.el" user-emacs-directory))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;;   Built-in customization framework
+;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("ebe16ce036d354549df68f90586854517b55fbeb738b60708f6f4554e540b801" "2e898e39728a53480a496370cd05fc9923ca1614" "17e8ebc51fc3791f83b2a8853d90a947bca4d814603e6ea8aa42275ff37d915a" "ebf26995fca2e06dfcaaa523e5c9d07f5594f2be" "c0fccdad64d0c5d45b77ae4183076f813fa700f7b474e859aa2dad83955205fa" "b3221d30b128ea2c03ce2f6bf5239b979ca1b6f1" default))
- '(org-journal-date-format "%A, %d %B %Y")
- '(org-journal-dir "~/.journal/")
  '(package-selected-packages
-   '(ess emmet-mode jinja2-mode deadgrep elpy dumb-jump google-this spaceline company which-key racket-mode rainbow-delimiters org-journal flx-ido guide-key editorconfig dockerfile-mode expand-region hydra sx json-mode jade-mode magit scratch phi-rectangle string-inflection flycheck phi-search-mc phi-search multiple-cursors helm-projectile helm projectile virtualenvwrapper powerline smartparens centered-cursor-mode yasnippet web-mode yaml-mode use-package))
- '(safe-local-variable-values '((pyvenv-workon . ~/\.env/emacs))))
+   '(orderless kind-icon corfu-terminal corfu marginalia vertico embark-consult embark consult avy which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
