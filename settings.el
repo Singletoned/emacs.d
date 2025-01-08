@@ -62,3 +62,4 @@
 
 (setq ispell-program-name "/opt/homebrew/bin/aspell")
 
+(tool-bar-mode -1)
