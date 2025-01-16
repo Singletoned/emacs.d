@@ -47,7 +47,7 @@ Else, call `comment-or-uncomment-region' on the whole line"
     (perl-mode perl-indent-level)
     (pike-mode c-basic-offset)
     (puppet-mode puppet-indent-level)
-    (python-mode python-indent)
+    (python-mode python-indent-offset)
     (ruby-mode ruby-indent-level)
     (scala-mode scala-indent:step)
     (sgml-mode sgml-basic-offset)
