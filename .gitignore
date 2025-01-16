@@ -2,6 +2,7 @@ elpa
 auto-save-list
 *.elc
 backups
+backup
 url
 projectile-bookmarks.eld
 /.cache/
