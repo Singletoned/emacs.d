@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: *args, **kwargs
+# key: ***
+# contributor: Ed Singleton
+# --
+*args, **kwargs
