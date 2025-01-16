@@ -5,6 +5,9 @@
 (load-file (expand-file-name "keyboard.el" user-emacs-directory))
 (load-file (expand-file-name "settings.el" user-emacs-directory))
 
+(setq os-config (concat user-emacs-directory (symbol-name system-type) ".el"))
+
+(when (file-exists-p os-config) (load os-config))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
