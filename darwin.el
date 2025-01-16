@@ -4,6 +4,5 @@
   :config (exec-path-from-shell-initialize))
 
 (setq
- mac-option-modifier 'meta
-mac-command-modifier 'super)
-
+  mac-option-modifier 'meta
+  mac-command-modifier 'super)

@@ -5,9 +5,11 @@
 (load-file (expand-file-name "keyboard.el" user-emacs-directory))
 (load-file (expand-file-name "settings.el" user-emacs-directory))
 
-(setq os-config (concat user-emacs-directory (symbol-name system-type) ".el"))
+(setq os-config
+  (concat user-emacs-directory (symbol-name system-type) ".el"))
 
-(when (file-exists-p os-config) (load os-config))
+(when (file-exists-p os-config)
+  (load os-config))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -17,15 +19,31 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(exec-path-from-shell yasnippet-snippets orderless kind-icon corfu-terminal corfu marginalia vertico embark-consult embark consult avy which-key dracula-theme)))
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  '
+  (package-selected-packages
+    '
+    (elisp-autofmt
+      exec-path-from-shell
+      yasnippet-snippets
+      orderless
+      kind-icon
+      corfu-terminal
+      corfu
+      marginalia
+      vertico
+      embark-consult
+      embark
+      consult
+      avy
+      which-key
+      dracula-theme)))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+  )

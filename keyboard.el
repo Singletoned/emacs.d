@@ -1,6 +1,10 @@
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
-(global-set-key (kbd "s-w") (lambda () (interactive) (kill-buffer (current-buffer))))
+(global-set-key
+  (kbd "s-w")
+  (lambda ()
+    (interactive)
+    (kill-buffer (current-buffer))))
 (global-set-key (kbd "s-/") 'my-comment-dwim)
 (global-set-key (kbd "s-[") 'unindent-dwim)
 (global-set-key (kbd "s-]") 'indent-dwim)
@@ -16,7 +20,11 @@
 
 (global-set-key (kbd "C-x C-k") 'kill-region)
 
-(global-set-key (kbd "C-x ~") (lambda () (interactive) (dired-other-window user-emacs-directory)))
+(global-set-key
+  (kbd "C-x ~")
+  (lambda ()
+    (interactive)
+    (dired-other-window user-emacs-directory)))
 
 (global-set-key (kbd "s-h") 'help-command)
 (global-set-key (kbd "s-C-h") 'help-command)
@@ -31,5 +39,6 @@
 (global-set-key (kbd "s-]") 'indent-dwim)
 
 (eval-after-load "dired"
-  '(progn
-     (define-key dired-mode-map (kbd "_") 'dired-create-empty-file)))
+  '
+  (progn
+    (define-key dired-mode-map (kbd "_") 'dired-create-empty-file)))
