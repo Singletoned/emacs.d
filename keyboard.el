@@ -19,6 +19,7 @@
 (global-set-key (kbd "C-x ~") (lambda () (interactive) (dired-other-window user-emacs-directory)))
 
 (global-set-key (kbd "s-h") 'help-command)
+(global-set-key (kbd "s-C-h") 'help-command)
 (global-set-key (kbd "C-h") 'backward-delete-char)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
