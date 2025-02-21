@@ -59,14 +59,12 @@
     (setq ccm-recenter-at-end-of-file t)))
 
 (use-package
-  smartparens-mode
-  :ensure smartparens
+  smartparens
+  :ensure t
   :diminish smartparens-mode
   :config
-  (progn
-    (require 'smartparens-config)
-    (smartparens-global-mode))
-  :bind (("C-{" . sp-select-previous-thing) ("C-}" . sp-select-next-thing)))
+  (require 'smartparens-config)
+  (smartparens-global-mode))
 
 (use-package
   whitespace
