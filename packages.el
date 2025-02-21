@@ -123,26 +123,7 @@
     (projectile-global-mode)
     (set
       'projectile-mode-line
-      '(:eval (format " P[%s]" (projectile-project-name)))))
-  ;; :bind (("C-x p o" . helm-projectile))
-  )
-
-;; (use-package
-;;   helm
-;;   :ensure t
-;;   :init (progn
-;;           (require 'helm-config)
-;;           (setq helm-buffer-max-length 32)
-;;           (setq helm-split-window-default-side 'other))
-;;   :bind (("M-x" . helm-M-x)
-;;          ("C-x C-m" . helm-M-x)
-;;          ("C-x b" . helm-buffers-list)
-;;          ("C-x C-f" . helm-find-files)))
-
-;; (use-package
-;;   helm-projectile
-;;   :ensure t
-;;   :bind (("C-x p h". helm-projectile-find-file)))
+      '(:eval (format " P[%s]" (projectile-project-name))))))
 
 (use-package
   multiple-cursors
