@@ -2,6 +2,10 @@
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
+(setq auto-save-file-name-transforms
+      `((".*" ,(expand-file-name "~/.emacs.d/autosaves/") t)))
+(setq delete-auto-save-files t)
+
 (setq initial-major-mode 'fundamental-mode) ; default mode for the *scratch* buffer
 (setq display-time-default-load-average nil) ; this information is useless for most
 
