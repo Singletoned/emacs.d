@@ -1,4 +1,5 @@
 (require 'package)
+
 (add-to-list
   'package-archives
   '("melpa" . "https://melpa.org/packages/")
@@ -38,11 +39,12 @@
 (use-package
   yasnippet
   :ensure t
+  :hook (snippet-mode . (lambda () (setq require-final-newline nil)))
   :config
   (progn
     (set
       'yas-snippet-dirs
-      `(,(concat user-emacs-directory "yasnippet-snippets")))
+      `(,(concat user-emacs-directory "snippets")))
     (yas-global-mode t)
     (dolist
       (pair '(("<tab>" . nil) ("TAB" . nil) ("M-§" . yas-expand)))
@@ -60,11 +62,10 @@
   smartparens-mode
   :ensure smartparens
   :diminish smartparens-mode
-  :init
+  :config
   (progn
     (require 'smartparens-config)
-    (smartparens-global-mode 1)
-    (set-default 'sp-autoescape-string-quote nil))
+    (smartparens-global-mode))
   :bind (("C-{" . sp-select-previous-thing) ("C-}" . sp-select-next-thing)))
 
 (use-package
@@ -125,26 +126,25 @@
     (set
       'projectile-mode-line
       '(:eval (format " P[%s]" (projectile-project-name)))))
-  :bind (("C-x p o" . helm-projectile)))
+  ;; :bind (("C-x p o" . helm-projectile))
+  )
 
-(use-package
-  helm
-  :ensure t
-  :init
-  (progn
-    (require 'helm-config)
-    (setq helm-buffer-max-length 32)
-    (setq helm-split-window-default-side 'other))
-  :bind
-  (("M-x" . helm-M-x)
-    ("C-x C-m" . helm-M-x)
-    ("C-x b" . helm-buffers-list)
-    ("C-x C-f" . helm-find-files)))
+;; (use-package
+;;   helm
+;;   :ensure t
+;;   :init (progn
+;;           (require 'helm-config)
+;;           (setq helm-buffer-max-length 32)
+;;           (setq helm-split-window-default-side 'other))
+;;   :bind (("M-x" . helm-M-x)
+;;          ("C-x C-m" . helm-M-x)
+;;          ("C-x b" . helm-buffers-list)
+;;          ("C-x C-f" . helm-find-files)))
 
-(use-package
-  helm-projectile
-  :ensure t
-  :bind (("C-x p h" . helm-projectile-find-file)))
+;; (use-package
+;;   helm-projectile
+;;   :ensure t
+;;   :bind (("C-x p h". helm-projectile-find-file)))
 
 (use-package
   multiple-cursors
@@ -154,15 +154,16 @@
   (("C->" . mc/mark-next-like-this)
     ("C-<" . mc/mark-previous-like-this)))
 
-(use-package
-  phi-search
-  :ensure t
-  :bind (("C-s" . phi-search) ("C-r" . phi-search-backward)))
+;; (use-package
+;;   phi-search
+;;   :ensure t
+;;   :bind (("C-s" . phi-search)
+;;          ("C-r" . phi-search-backward)))
 
-(use-package
-  phi-search-mc
-  :ensure t
-  :bind (("C-c C-m" . phi-search-mc/mark-all)))
+;; (use-package
+;;   phi-search-mc
+;;   :ensure t
+;;   :bind (("C-c C-m" . phi-search-mc/mark-all)))
 
 (use-package
   flycheck
@@ -281,7 +282,10 @@
 
 (use-package which-key :ensure t :init (which-key-mode))
 
-(use-package company :ensure t :init (company-mode))
+;; (use-package
+;;   company
+;;   :ensure t
+;;   :init (company-mode))
 
 (use-package
   spaceline
@@ -383,3 +387,15 @@
     ("M-y" . consult-yank-pop) ; orig. yank-pop
     ("C-s" . consult-line)) ; orig. isearch
   :config (setq consult-narrow-key "<"))
+
+(use-package vertico :ensure t :config (vertico-mode))
+
+(use-package
+  elisp-autofmt
+  :ensure t
+  :config
+  (setq
+    elisp-autofmt-style 'fixed
+    indent-tabs-mode nil
+    lisp-indent-function nil
+    lisp-indent-offset 2))
