@@ -92,15 +92,9 @@
     (setq ls-lisp-use-insert-directory-program nil)
     (setq ls-lisp-verbosity nil)))
 
-(use-package
-  projectile
-  :straight t
-  :init
-  (progn
-    (projectile-global-mode)
-    (set
-      'projectile-mode-line
-      '(:eval (format " P[%s]" (projectile-project-name))))))
+(use-package project
+  :config
+  (setq project-vc-merge-submodules nil))
 
 (use-package
   multiple-cursors
