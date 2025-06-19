@@ -341,3 +341,8 @@
   :config (setq jinx-menu-suggestions 5)
   :bind (("M-$" . jinx-correct)
          ("C-M-$" . jinx-languages)))
+
+(use-package
+  just-ts-mode
+  :ensure t
+  :config (just-ts-mode-install-grammar))
