@@ -72,7 +72,6 @@
     (setq whitespace-style '(face tabs trailing tab-mark))
     (global-whitespace-mode)))
 
-(use-package powerline :straight t :config (powerline-center-theme))
 
 (use-package
   virtualenvwrapper
@@ -221,12 +220,34 @@
 ;;   :init (company-mode))
 
 (use-package
-  spaceline
+  all-the-icons
   :straight t
-  :init
-  (progn
-    (require 'spaceline-config)
-    (spaceline-spacemacs-theme)))
+  :if (display-graphic-p))
+
+(use-package
+  doom-modeline
+  :straight t
+  :after all-the-icons
+  :init (doom-modeline-mode 1)
+  :config
+  (setq doom-modeline-height 25
+        doom-modeline-bar-width 3
+        doom-modeline-icon nil
+        doom-modeline-major-mode-icon t
+        doom-modeline-major-mode-color-icon t
+        doom-modeline-buffer-file-name-style 'relative-from-project
+        doom-modeline-buffer-state-icon t
+        doom-modeline-buffer-modification-icon t
+        doom-modeline-minor-modes nil
+        doom-modeline-enable-word-count nil
+        doom-modeline-buffer-encoding nil
+        doom-modeline-indent-info nil
+        doom-modeline-checker-simple-format t
+        doom-modeline-vcs-max-length 12
+        doom-modeline-env-version t
+        doom-modeline-irc-stylize 'identity
+        doom-modeline-github-timer nil
+        doom-modeline-gnus-timer nil))
 
 (use-package google-this :straight t)
 
