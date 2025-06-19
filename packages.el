@@ -155,6 +155,12 @@
     (setq flycheck-idle-change-delay 5)
     (global-flycheck-mode)))
 
+
+;; (use-package
+;;   flycheck-aspell
+;;   :ensure t
+;;   :init (add-to-list 'flycheck-checkers 'markdown-aspell-dynamic))
+
 (use-package
   string-inflection
   :ensure t

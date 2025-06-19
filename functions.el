@@ -176,7 +176,7 @@
       t)))
 
 (defun format-python ()
-  "Format Python using Black"
+  "Format Python using Ruff"
   (interactive)
   (let
     (
@@ -194,7 +194,7 @@
       ;; beginning and end of buffer
       beg end
       ;; command and parameters
-      "~/.envs/emacs/bin/black -"
+      "uvx ruff format - | uvx ruff check --fix --unsafe-fixes --extend-select I --exit-zero --silent -"
       ;; output buffer
       (current-buffer)
       ;; replace?
