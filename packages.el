@@ -57,10 +57,14 @@
   :config
   (require 'smartparens-config)
   (smartparens-global-mode)
-  (sp-pair "\"" "\""
+  (sp-pair
+    "\""
+    "\""
     :actions '(insert wrap autoskip navigate)
     :post-handlers nil)
-  (sp-pair "'" "'"
+  (sp-pair
+    "'"
+    "'"
     :actions '(insert wrap autoskip navigate)
     :post-handlers nil))
 
@@ -125,13 +129,16 @@
 ;;   :ensure t
 ;;   :bind (("C-c C-m" . phi-search-mc/mark-all)))
 
+
 (use-package
   flycheck
   :ensure t
   :init
   (progn
-    (setq-default flycheck-disabled-checkers '(python-mypy python-pylint python-flake8))
-    (setq python-flymake-command '("ruff" "check" "--quiet" "--stdin-filename=stdin" "-"))
+    (setq-default flycheck-disabled-checkers
+      '(python-mypy python-pylint python-flake8))
+    (setq python-flymake-command
+      '("ruff" "check" "--quiet" "--stdin-filename=stdin" "-"))
     (setq flycheck-python-flake8-executable
       "~/.envs/emacs/bin/flake8")
     (setq flycheck-sh-shellcheck-executable "shellcheck")
@@ -176,10 +183,12 @@
 (use-package
   markdown-mode
   :ensure t
-  :init (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
+  :init
+  (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
+  (setq markdown-asymmetric-header t)
   :bind
   (:map
-    markdown-mode-command-map
+    markdown-mode-map
     ("M-p" . backward-paragraph)
     ("M-n" . forward-paragraph)))
 
@@ -313,13 +322,17 @@
 (use-package
   consult
   :ensure t
-  ;; Other good things to bind: consult-ripgrep, consult-line-multi,
-  ;; consult-history, consult-outline
   :bind
   (("C-x b" . consult-buffer) ; orig. switch-to-buffer
     ("M-y" . consult-yank-pop) ; orig. yank-pop
-    ("C-s" . consult-line)) ; orig. isearch
-  :config (setq consult-narrow-key "<"))
+    ("C-s" . consult-line) ; orig. isearch
+    )
+  :config
+  ;; Avoid completion-style interference
+  (setq
+    completion-styles '(basic substring)
+    completion-category-defaults nil
+    completion-category-overrides '((consult-location (styles basic substring)))))
 
 (use-package vertico :ensure t :config (vertico-mode))
 
@@ -333,14 +346,16 @@
     lisp-indent-function nil
     lisp-indent-offset 2))
 
-(use-package jinx
+(use-package
+  jinx
   :ensure t
-  :init (dolist (hook '(text-mode-hook))
-  (add-hook hook #'jinx-mode))
+  :init
+  (dolist (hook '(text-mode-hook))
+    (add-hook hook #'jinx-mode))
 
   :config (setq jinx-menu-suggestions 5)
-  :bind (("M-$" . jinx-correct)
-         ("C-M-$" . jinx-languages)))
+  :bind (("M-$" . jinx-correct) ("C-M-$" . jinx-languages)))
+
 
 (use-package
   just-ts-mode
