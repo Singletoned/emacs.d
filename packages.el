@@ -348,3 +348,18 @@
   :config (just-ts-mode-install-grammar))
 
 (use-package s :ensure t)
+
+(use-package
+  smerge-mode
+  :ensure nil ;; built-in
+  :bind
+  (:map
+    smerge-mode-map
+    ("C-c m n" . smerge-next)
+    ("C-c m p" . smerge-prev)
+    ("C-c m u" . smerge-keep-upper)
+    ("C-c m l" . smerge-keep-lower)
+    ("C-c m a" . smerge-keep-all)
+    ("C-c m RET" . smerge-keep-current)
+    ("C-c m r" . smerge-refine)
+    ("C-c m e" . smerge-ediff)))
