@@ -332,3 +332,12 @@
     indent-tabs-mode nil
     lisp-indent-function nil
     lisp-indent-offset 2))
+
+(use-package jinx
+  :ensure t
+  :init (dolist (hook '(text-mode-hook))
+  (add-hook hook #'jinx-mode))
+
+  :config (setq jinx-menu-suggestions 5)
+  :bind (("M-$" . jinx-correct)
+         ("C-M-$" . jinx-languages)))
