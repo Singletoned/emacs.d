@@ -130,6 +130,8 @@
   :ensure t
   :init
   (progn
+    (setq-default flycheck-disabled-checkers '(python-mypy python-pylint python-flake8))
+    (setq python-flymake-command '("ruff" "check" "--quiet" "--stdin-filename=stdin" "-"))
     (setq flycheck-python-flake8-executable
       "~/.envs/emacs/bin/flake8")
     (setq flycheck-sh-shellcheck-executable "shellcheck")
