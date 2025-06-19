@@ -56,7 +56,13 @@
   :diminish smartparens-mode
   :config
   (require 'smartparens-config)
-  (smartparens-global-mode))
+  (smartparens-global-mode)
+  (sp-pair "\"" "\""
+    :actions '(insert wrap autoskip navigate)
+    :post-handlers nil)
+  (sp-pair "'" "'"
+    :actions '(insert wrap autoskip navigate)
+    :post-handlers nil))
 
 (use-package
   whitespace
