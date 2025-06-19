@@ -346,3 +346,5 @@
   just-ts-mode
   :ensure t
   :config (just-ts-mode-install-grammar))
+
+(use-package s :ensure t)
