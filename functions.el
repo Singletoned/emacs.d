@@ -233,3 +233,89 @@
       "*Tidy Error Buffer*"
       ;; show error buffer?
       t)))
+
+(defun insert-date ()
+  "Insert the current date in ISO 8601 format (YYYY-MM-DD)."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
+
+(defun insert-datetime ()
+  "Insert the current date and time in ISO 8601 format (YYYY-MM-DDTHH:MM:SS)."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%dT%H:%M:%S")))
+
+(defun docker-region-to-exec-CMD (start end)
+  "Convert selected shell command to Docker CMD exec form and replace region."
+  (interactive "r")
+  (let*
+    (
+      (cmd (buffer-substring-no-properties start end))
+      (words (split-string cmd " +" t))
+      (quoted (mapcar (lambda (w) (format "\"%s\"" w)) words))
+      (json-array (concat "[" (mapconcat 'identity quoted ", ") "]")))
+    (delete-region start end)
+    (insert json-array)
+    (kill-new json-array)
+    (message "Replaced with: %s" json-array)))
+
+(defmacro make-s-command (s-function command-name)
+  "Create an interactive command named COMMAND-NAME that applies S-FUNCTION to the current region.
+S-FUNCTION should be a symbol of a function from s.el.
+COMMAND-NAME should be a string for the new command name."
+  `
+  (defun ,(intern command-name) (start end)
+    ,(format "Apply `%s' to the current region." s-function)
+    (interactive "r")
+    (let ((text (buffer-substring-no-properties start end)))
+      (delete-region start end)
+      (insert (funcall ',s-function text)))))
+
+(make-s-command s-dashed-words "to-kebab-case-region")
+(make-s-command s-lower-camel-case "to-camel-case-region")
+(make-s-command s-snake-case "to-snake-case-region")
+
+(defun dired-dwim-copy ()
+  "Copy file to other dired window"
+  (interactive)
+  (let ((dired-dwim-target t))
+    (dired-do-copy)))
+
+
+(defun strip-common-line-prefix (start end)
+  "Strip the longest common prefix of all lines in the region or buffer."
+  (interactive
+    (if (use-region-p)
+      (list (region-beginning) (region-end))
+      (list (point-min) (point-max))))
+  (save-excursion
+    (save-restriction
+      (narrow-to-region start end)
+      (goto-char (point-min))
+      (let ((lines '()))
+        ;; Collect all lines into a list
+        (while (not (eobp))
+          (push
+            (buffer-substring-no-properties
+              (line-beginning-position)
+              (line-end-position))
+            lines)
+          (forward-line 1))
+        (setq lines (nreverse lines))
+        ;; Find the common prefix
+        (let ((prefix (car lines)))
+          (dolist (line (cdr lines))
+            (let
+              (
+                (i 0)
+                (max (min (length prefix) (length line))))
+              (while
+                (and (< i max)
+                  (char-equal (aref prefix i) (aref line i)))
+                (setq i (1+ i)))
+              (setq prefix (substring prefix 0 i))))
+          ;; Now remove the prefix from each line
+          (goto-char (point-min))
+          (while (not (eobp))
+            (when (looking-at (regexp-quote prefix))
+              (replace-match ""))
+            (forward-line 1)))))))
