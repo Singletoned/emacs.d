@@ -63,7 +63,7 @@
 
 (setq uniquify-buffer-name-style 'post-forward)
 
-(setq ispell-program-name "/opt/homebrew/bin/aspell")
+(setq ispell-program-name "/opt/homebrew/bin/enchant")
 (setq ispell-dictionary "british")
 
 (tool-bar-mode -1)
