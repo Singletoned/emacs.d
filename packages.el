@@ -186,14 +186,6 @@
     (setq guide-key/popup-window-position 'bottom))
   :init (guide-key-mode 1))
 
-(use-package
-  flx-ido
-  :straight t
-  :init
-  (progn
-    (ido-mode t)
-    (ido-everywhere t)
-    (flx-ido-mode t)))
 
 (use-package
   org-journal
@@ -340,13 +332,46 @@
     ("C-s" . consult-line) ; orig. isearch
     )
   :config
-  ;; Avoid completion-style interference
-  (setq
-    completion-styles '(basic substring)
-    completion-category-defaults nil
-    completion-category-overrides '((consult-location (styles basic substring)))))
+  ;; Enable consult previews
+  (setq consult-preview-key 'any))
 
-(use-package vertico :straight t :config (vertico-mode))
+(use-package vertico 
+  :straight t 
+  :config 
+  (vertico-mode)
+  (setq vertico-cycle t
+        vertico-resize t))
+
+(use-package marginalia
+  :straight t
+  :init (marginalia-mode)
+  :config
+  (setq marginalia-annotators '(marginalia-annotators-heavy)))
+
+(use-package embark
+  :straight t
+  :bind
+  (("C-." . embark-act)
+   ("C-;" . embark-dwim)
+   ("C-h B" . embark-bindings))
+  :config
+  (setq prefix-help-command #'embark-prefix-help-command))
+
+(use-package embark-consult
+  :straight t
+  :after (embark consult)
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package
+  orderless
+  :straight t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides
+    '((file (styles basic partial-completion))
+      (consult-location (styles basic substring))))
+  (orderless-matching-styles '(orderless-literal orderless-regexp orderless-flex)))
 
 (use-package
   elisp-autofmt
