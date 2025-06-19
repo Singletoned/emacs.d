@@ -239,7 +239,12 @@
 (use-package
   dumb-jump
   :straight t
-  :config (setq dumb-jump-selector 'helm)
+  :defer t
+  :init
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+  :config
+  (setq dumb-jump-force-searcher 'rg
+        xref-show-definitions-function #'xref-show-definitions-completing-read)
   :bind
   (("M-g o" . dumb-jump-go-other-window)
     ("M-g j" . dumb-jump-go)
