@@ -157,82 +157,47 @@
               (* (or count 1) (- 0 indent-width)))))))))
 
 
+(defun format-with-command (command &optional region-only)
+  "Format current buffer or region using COMMAND.
+If REGION-ONLY is non-nil, only format region when one is active."
+  (let*
+    (
+      (deactivate-mark nil)
+      (has-region (and mark-active (use-region-p)))
+      (beg
+        (if (and region-only has-region)
+          (region-beginning)
+          (point-min)))
+      (end
+        (if (and region-only has-region)
+          (region-end)
+          (point-max))))
+    (when (or (not region-only) has-region (not mark-active))
+      (shell-command-on-region
+        beg end
+        command
+        (current-buffer)
+        t
+        "*Format Error Buffer*"
+        t))))
+
 (defun format-json ()
-  "Pretty format buffer using Python json lib."
+  "Pretty format JSON in buffer or region using Python."
   (interactive)
-  (if (use-region-p)
-    (shell-command-on-region
-      ;; beginning and end of buffer
-      (region-beginning) (region-end)
-      ;; command and parameters
-      "python3 -c 'import json, sys; print(json.dumps(json.loads(sys.stdin.read()), indent=2, sort_keys=True))'"
-      ;; output buffer
-      (current-buffer)
-      ;; replace?
-      t
-      ;; name of the error buffer
-      "*Tidy Error Buffer*"
-      ;; show error buffer?
-      t)))
+  (format-with-command
+    "python3 -c 'import json, sys; print(json.dumps(json.loads(sys.stdin.read()), indent=2, sort_keys=True))'"
+    t))
 
 (defun format-python ()
-  "Format Python using Ruff"
+  "Format Python using Ruff."
   (interactive)
-  (let
-    (
-      (deactivate-mark nil)
-      (beg
-        (if mark-active
-          (region-beginning)
-          (point-min)))
-      (end
-        (if mark-active
-          (region-end)
-          (point-max))))
-    (message "%d %d" beg end)
-    (shell-command-on-region
-      ;; beginning and end of buffer
-      beg end
-      ;; command and parameters
-      "uvx ruff format - | uvx ruff check --fix --unsafe-fixes --extend-select I --exit-zero --silent -"
-      ;; output buffer
-      (current-buffer)
-      ;; replace?
-      t
-      ;; name of the error buffer
-      "*Tidy Error Buffer*"
-      ;; show error buffer?
-      t)))
-
+  (format-with-command
+    "uvx ruff format - | uvx ruff check --fix --unsafe-fixes --extend-select I --exit-zero --silent -"))
 
 (defun format-markdown ()
-  "Format Markdown using mdformat"
+  "Format Markdown using mdformat."
   (interactive)
-  (let
-    (
-      (deactivate-mark nil)
-      (beg
-        (if mark-active
-          (region-beginning)
-          (point-min)))
-      (end
-        (if mark-active
-          (region-end)
-          (point-max))))
-    (message "%d %d" beg end)
-    (shell-command-on-region
-      ;; beginning and end of buffer
-      beg end
-      ;; command and parameters
-      "uvx mdformat -"
-      ;; output buffer
-      (current-buffer)
-      ;; replace?
-      t
-      ;; name of the error buffer
-      "*Tidy Error Buffer*"
-      ;; show error buffer?
-      t)))
+  (format-with-command "uvx mdformat -"))
 
 (defun insert-date ()
   "Insert the current date in ISO 8601 format (YYYY-MM-DD)."
