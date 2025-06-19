@@ -45,7 +45,7 @@
 (setq-default show-trailing-whitespace t)
 
 (blink-cursor-mode -1) ; Steady cursor
-(pixel-scroll-precision-mode) ; Smooth scrolling
+
 
 (global-hl-line-mode t)
 (set-default 'hl-line-sticky-flag nil)
