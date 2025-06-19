@@ -71,3 +71,6 @@
 
 (setq case-fold-search t)
 (setq completion-ignore-case t)
+
+
+(setq create-lockfiles nil)
