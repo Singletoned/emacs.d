@@ -67,3 +67,7 @@
 (setq ispell-dictionary "british")
 
 (tool-bar-mode -1)
+
+
+(setq case-fold-search t)
+(setq completion-ignore-case t)
