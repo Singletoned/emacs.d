@@ -363,3 +363,11 @@
     ("C-c m RET" . smerge-keep-current)
     ("C-c m r" . smerge-refine)
     ("C-c m e" . smerge-ediff)))
+
+(use-package
+  aider
+  :straight (:host github :repo "tninja/aider.el")
+  :config
+  (setq aider-args
+    `("--config" ,(expand-file-name "~/.aider.conf.yml")))
+  (global-set-key (kbd "C-c a") 'aider-transient-menu))
