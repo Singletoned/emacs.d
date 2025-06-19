@@ -1,14 +1,6 @@
-(require 'package)
-
-(add-to-list
-  'package-archives
-  '("melpa" . "https://melpa.org/packages/")
-  t)
-(package-initialize)
-
 (use-package
   yaml-mode
-  :ensure t
+  :straight t
   :init
   (dolist (extension '("yml" "yaml" "sls"))
     (add-to-list
@@ -17,7 +9,7 @@
 
 (use-package
   web-mode
-  :ensure t
+  :straight t
   :init
   (dolist
     (extension
@@ -38,7 +30,7 @@
 
 (use-package
   yasnippet
-  :ensure t
+  :straight t
   :hook (snippet-mode . (lambda () (setq require-final-newline nil)))
   :config
   (progn
@@ -52,7 +44,7 @@
 
 (use-package
   smartparens
-  :ensure t
+  :straight t
   :diminish smartparens-mode
   :config
   (require 'smartparens-config)
@@ -70,7 +62,7 @@
 
 (use-package
   whitespace
-  :ensure t
+  :straight t
   :config
   (progn
     (set
@@ -80,11 +72,11 @@
     (setq whitespace-style '(face tabs trailing tab-mark))
     (global-whitespace-mode)))
 
-(use-package powerline :ensure t :config (powerline-center-theme))
+(use-package powerline :straight t :config (powerline-center-theme))
 
 (use-package
   virtualenvwrapper
-  :ensure t
+  :straight t
   :config
   (progn
     (venv-initialize-interactive-shells) ;; if you want interactive shell support
@@ -94,7 +86,7 @@
 
 (use-package
   ls-lisp
-  ;;  :ensure t
+  ;;  :straight t
   :config
   (progn
     (setq ls-lisp-use-insert-directory-program nil)
@@ -102,7 +94,7 @@
 
 (use-package
   projectile
-  :ensure t
+  :straight t
   :init
   (progn
     (projectile-global-mode)
@@ -112,7 +104,7 @@
 
 (use-package
   multiple-cursors
-  :ensure t
+  :straight t
   :config (multiple-cursors-mode)
   :bind
   (("C->" . mc/mark-next-like-this)
@@ -120,19 +112,19 @@
 
 ;; (use-package
 ;;   phi-search
-;;   :ensure t
+;;   :straight t
 ;;   :bind (("C-s" . phi-search)
 ;;          ("C-r" . phi-search-backward)))
 
 ;; (use-package
 ;;   phi-search-mc
-;;   :ensure t
+;;   :straight t
 ;;   :bind (("C-c C-m" . phi-search-mc/mark-all)))
 
 
 (use-package
   flycheck
-  :ensure t
+  :straight t
   :init
   (progn
     (setq-default flycheck-disabled-checkers
@@ -148,27 +140,27 @@
 
 ;; (use-package
 ;;   flycheck-aspell
-;;   :ensure t
+;;   :straight t
 ;;   :init (add-to-list 'flycheck-checkers 'markdown-aspell-dynamic))
 
 (use-package
   string-inflection
-  :ensure t
+  :straight t
   :bind ("C-c i" . string-inflection-cycle))
 
-(use-package scratch :ensure t)
+(use-package scratch :straight t)
 
-(use-package jade-mode :ensure t)
-(use-package json-mode :ensure t)
+(use-package jade-mode :straight t)
+(use-package json-mode :straight t)
 (use-package racket-mode)
 
-(use-package sx :ensure t)
+(use-package sx :straight t)
 
-(use-package hydra :ensure t)
+(use-package hydra :straight t)
 
 (use-package
   dockerfile-mode
-  :ensure t
+  :straight t
   :init
   (progn
     (add-to-list
@@ -178,11 +170,11 @@
       'auto-mode-alist
       '("\\.docker\\'" . dockerfile-mode))))
 
-(use-package editorconfig :ensure t :config (editorconfig-mode 1))
+(use-package editorconfig :straight t :config (editorconfig-mode 1))
 
 (use-package
   markdown-mode
-  :ensure t
+  :straight t
   :init
   (add-hook 'markdown-mode-hook 'turn-on-orgtbl)
   (setq markdown-asymmetric-header t)
@@ -194,7 +186,7 @@
 
 (use-package
   guide-key
-  :ensure t
+  :straight t
   :config
   (progn
     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
@@ -203,7 +195,7 @@
 
 (use-package
   flx-ido
-  :ensure t
+  :straight t
   :init
   (progn
     (ido-mode t)
@@ -212,41 +204,41 @@
 
 (use-package
   org-journal
-  :ensure t
+  :straight t
   :custom
   (org-journal-dir "~/.journal/")
   (org-journal-date-format "%A, %d %B %Y"))
 
 (use-package
   rainbow-delimiters
-  :ensure t
+  :straight t
   :init
   (progn
     (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
     (add-hook 'racket-repl-mode-hook #'rainbow-delimiters-mode)))
 
-(use-package racket-mode :ensure t)
+(use-package racket-mode :straight t)
 
-(use-package which-key :ensure t :init (which-key-mode))
+(use-package which-key :straight t :init (which-key-mode))
 
 ;; (use-package
 ;;   company
-;;   :ensure t
+;;   :straight t
 ;;   :init (company-mode))
 
 (use-package
   spaceline
-  :ensure t
+  :straight t
   :init
   (progn
     (require 'spaceline-config)
     (spaceline-spacemacs-theme)))
 
-(use-package google-this :ensure t)
+(use-package google-this :straight t)
 
 (use-package
   dumb-jump
-  :ensure t
+  :straight t
   :config (setq dumb-jump-selector 'helm)
   :bind
   (("M-g o" . dumb-jump-go-other-window)
@@ -255,13 +247,13 @@
     ("M-g x" . dumb-jump-go-prefer-external)
     ("M-g z" . dumb-jump-go-prefer-external-other-window)))
 
-(use-package deadgrep :ensure t)
+(use-package deadgrep :straight t)
 
-(use-package s :ensure t)
+(use-package s :straight t)
 
 (use-package
   ef-themes
-  :ensure t
+  :straight t
   :init (load-theme 'ef-bio :no-confirm))
 
 (use-package
@@ -283,7 +275,7 @@
 
 (use-package
   magit
-  :ensure t
+  :straight t
   :init
   (progn
     (setq magit-commit-show-diff nil))
@@ -299,7 +291,7 @@
 
 (use-package
   centered-cursor-mode
-  :ensure t
+  :straight t
   :config
   (progn
     (global-centered-cursor-mode)
@@ -307,12 +299,12 @@
 
 (use-package
   expand-region
-  :ensure t
+  :straight t
   :bind (("C-=" . er/expand-region)))
 
 (use-package
   phi-rectangle
-  :ensure t
+  :straight t
   :bind
   (("C-x r C-SPC" . phi-rectangle-set-mark-command)
     ;; ("C-x r C-x" . rm-exchange-point-and-mark)
@@ -321,7 +313,7 @@
 
 (use-package
   consult
-  :ensure t
+  :straight t
   :bind
   (("C-x b" . consult-buffer) ; orig. switch-to-buffer
     ("M-y" . consult-yank-pop) ; orig. yank-pop
@@ -334,11 +326,11 @@
     completion-category-defaults nil
     completion-category-overrides '((consult-location (styles basic substring)))))
 
-(use-package vertico :ensure t :config (vertico-mode))
+(use-package vertico :straight t :config (vertico-mode))
 
 (use-package
   elisp-autofmt
-  :ensure t
+  :straight t
   :config
   (setq
     elisp-autofmt-style 'fixed
@@ -348,7 +340,7 @@
 
 (use-package
   jinx
-  :ensure t
+  :straight t
   :init
   (dolist (hook '(text-mode-hook))
     (add-hook hook #'jinx-mode))
@@ -359,10 +351,10 @@
 
 (use-package
   just-ts-mode
-  :ensure t
+  :straight t
   :config (just-ts-mode-install-grammar))
 
-(use-package s :ensure t)
+(use-package s :straight t)
 
 (use-package
   smerge-mode
