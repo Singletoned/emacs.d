@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: here
+# key: here
+# --
+__here__ = pathlib.Path(__file__).resolve().parent
