@@ -33,14 +33,13 @@
   :straight t
   :hook (snippet-mode . (lambda () (setq require-final-newline nil)))
   :config
-  (progn
-    (set
-      'yas-snippet-dirs
-      `(,(concat user-emacs-directory "snippets")))
-    (yas-global-mode t)
-    (dolist
-      (pair '(("<tab>" . nil) ("TAB" . nil) ("M-§" . yas-expand)))
-      (define-key yas-minor-mode-map (kbd (car pair)) (cdr pair)))))
+  (set
+    'yas-snippet-dirs
+    `(,(concat user-emacs-directory "snippets")))
+  (yas-global-mode t)
+  (dolist
+    (pair '(("<tab>" . nil) ("TAB" . nil) ("M-§" . yas-expand)))
+    (define-key yas-minor-mode-map (kbd (car pair)) (cdr pair))))
 
 (use-package
   smartparens
@@ -64,32 +63,29 @@
   whitespace
   :straight t
   :config
-  (progn
-    (set
-      'whitespace-style
-      '(trailing tabs lines-tail indentation: :space face))
-    (set 'whitespace-line-column 78)
-    (setq whitespace-style '(face tabs trailing tab-mark))
-    (global-whitespace-mode)))
+  (set
+    'whitespace-style
+    '(trailing tabs lines-tail indentation: :space face))
+  (set 'whitespace-line-column 78)
+  (setq whitespace-style '(face tabs trailing tab-mark))
+  (global-whitespace-mode))
 
 
 (use-package
   virtualenvwrapper
   :straight t
   :config
-  (progn
-    (venv-initialize-interactive-shells) ;; if you want interactive shell support
-    (venv-initialize-eshell) ;; if you want eshell support
-    (setq venv-location
-      (file-name-as-directory (expand-file-name ".envs" "~")))))
+  (venv-initialize-interactive-shells) ;; if you want interactive shell support
+  (venv-initialize-eshell) ;; if you want eshell support
+  (setq venv-location
+    (file-name-as-directory (expand-file-name ".envs" "~"))))
 
 (use-package
   ls-lisp
   ;;  :straight t
   :config
-  (progn
-    (setq ls-lisp-use-insert-directory-program nil)
-    (setq ls-lisp-verbosity nil)))
+  (setq ls-lisp-use-insert-directory-program nil)
+  (setq ls-lisp-verbosity nil))
 
 (use-package project
   :config
@@ -119,16 +115,15 @@
   flycheck
   :straight t
   :init
-  (progn
-    (setq-default flycheck-disabled-checkers
-      '(python-mypy python-pylint python-flake8))
-    (setq python-flymake-command
-      '("ruff" "check" "--quiet" "--stdin-filename=stdin" "-"))
-    (setq flycheck-python-flake8-executable
-      "~/.envs/emacs/bin/flake8")
-    (setq flycheck-sh-shellcheck-executable "shellcheck")
-    (setq flycheck-idle-change-delay 5)
-    (global-flycheck-mode)))
+  (setq-default flycheck-disabled-checkers
+    '(python-mypy python-pylint python-flake8))
+  (setq python-flymake-command
+    '("ruff" "check" "--quiet" "--stdin-filename=stdin" "-"))
+  (setq flycheck-python-flake8-executable
+    "~/.envs/emacs/bin/flake8")
+  (setq flycheck-sh-shellcheck-executable "shellcheck")
+  (setq flycheck-idle-change-delay 5)
+  (global-flycheck-mode))
 
 
 ;; (use-package
@@ -155,13 +150,12 @@
   dockerfile-mode
   :straight t
   :init
-  (progn
-    (add-to-list
-      'auto-mode-alist
-      '("Dockerfile\\'" . dockerfile-mode))
-    (add-to-list
-      'auto-mode-alist
-      '("\\.docker\\'" . dockerfile-mode))))
+  (add-to-list
+    'auto-mode-alist
+    '("Dockerfile\\'" . dockerfile-mode))
+  (add-to-list
+    'auto-mode-alist
+    '("\\.docker\\'" . dockerfile-mode)))
 
 (use-package editorconfig :straight t :config (editorconfig-mode 1))
 
@@ -181,9 +175,8 @@
   guide-key
   :straight t
   :config
-  (progn
-    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
-    (setq guide-key/popup-window-position 'bottom))
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4"))
+  (setq guide-key/popup-window-position 'bottom)
   :init (guide-key-mode 1))
 
 
@@ -198,9 +191,8 @@
   rainbow-delimiters
   :straight t
   :init
-  (progn
-    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-    (add-hook 'racket-repl-mode-hook #'rainbow-delimiters-mode)))
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'racket-repl-mode-hook #'rainbow-delimiters-mode))
 
 (use-package racket-mode :straight t)
 
@@ -271,43 +263,39 @@
 (use-package
   hippie-expand
   :init
-  (progn
-    (setq my-hippie-expand-line
-      (make-hippie-expand-function
-        '(try-expand-line try-expand-line-all-buffers)
-        t))
-    (bind-key "±" my-hippie-expand-line)
-    (setq hippie-expand-try-functions-list
-      '
-      (try-expand-dabbrev
-        try-expand-dabbrev-all-buffers
-        try-expand-dabbrev-from-kill
-        try-expand-all-abbrevs)))
+  (setq my-hippie-expand-line
+    (make-hippie-expand-function
+      '(try-expand-line try-expand-line-all-buffers)
+      t))
+  (bind-key "±" my-hippie-expand-line)
+  (setq hippie-expand-try-functions-list
+    '
+    (try-expand-dabbrev
+      try-expand-dabbrev-all-buffers
+      try-expand-dabbrev-from-kill
+      try-expand-all-abbrevs))
   :bind (("M-/" . hippie-expand) ("§" . hippie-expand)))
 
 (use-package
   magit
   :straight t
   :init
-  (progn
-    (setq magit-commit-show-diff nil))
+  (setq magit-commit-show-diff nil)
   :config
-  (progn
-    (setq magit-git-executable "/opt/homebrew/bin/git")
-    (magit-add-section-hook
-      'magit-status-sections-hook
-      'magit-insert-unpushed-to-upstream
-      'magit-insert-unpushed-to-upstream-or-recent
-      'replace))
+  (setq magit-git-executable "/opt/homebrew/bin/git")
+  (magit-add-section-hook
+    'magit-status-sections-hook
+    'magit-insert-unpushed-to-upstream
+    'magit-insert-unpushed-to-upstream-or-recent
+    'replace)
   :bind (("C-x g" . magit-status)))
 
 (use-package
   centered-cursor-mode
   :straight t
   :config
-  (progn
-    (global-centered-cursor-mode)
-    (setq ccm-recenter-at-end-of-file t)))
+  (global-centered-cursor-mode)
+  (setq ccm-recenter-at-end-of-file t))
 
 (use-package
   expand-region
@@ -399,8 +387,6 @@
   :straight t
   :config (just-ts-mode-install-grammar))
 
-(use-package s :straight t)
-
 (use-package
   smerge-mode
   :ensure nil ;; built-in
@@ -422,4 +408,4 @@
   :config
   (setq aider-args
     `("--config" ,(expand-file-name "~/.aider.conf.yml")))
-  (global-set-key (kbd "C-c a") 'aider-transient-menu))
+  :bind ("C-c a" . aider-transient-menu))

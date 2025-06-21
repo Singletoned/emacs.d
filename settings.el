@@ -1,15 +1,15 @@
-(setq inhibit-splash-screen t)
+(setopt inhibit-splash-screen t)
 
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+(setopt backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
-(setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name "~/.emacs.d/autosaves/") t)))
-(setq delete-auto-save-files t)
+(setopt auto-save-file-name-transforms
+        `((".*" ,(expand-file-name "~/.emacs.d/autosaves/") t)))
+(setopt delete-auto-save-files t)
 
-(setq initial-major-mode 'fundamental-mode) ; default mode for the *scratch* buffer
-(setq display-time-default-load-average nil) ; this information is useless for most
+(setopt initial-major-mode 'fundamental-mode) ; default mode for the *scratch* buffer
+(setopt display-time-default-load-average nil) ; this information is useless for most
 
-(setq vc-follow-symlinks t)
+(setopt vc-follow-symlinks t)
 
 ;; Automatically reread from disk if the underlying file changes
 (setq auto-revert-interval 1)
