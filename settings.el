@@ -74,3 +74,7 @@
 
 
 (setq create-lockfiles nil)
+
+;; Fix dired rename annoyances - prevent accidental completion selection
+(setopt completion-auto-select nil)  ; Don't auto-select first completion
+

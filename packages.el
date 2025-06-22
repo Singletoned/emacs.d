@@ -323,12 +323,13 @@
   ;; Enable consult previews
   (setq consult-preview-key 'any))
 
-(use-package vertico 
-  :straight t 
-  :config 
+(use-package vertico
+  :straight t
+  :config
   (vertico-mode)
   (setq vertico-cycle t
-        vertico-resize t))
+        vertico-resize t
+        vertico-preselect 'prompt))  ; Stay on prompt, not first completion
 
 (use-package marginalia
   :straight t
